@@ -1,19 +1,17 @@
 import React from "react";
 import "./App.css";
-import { Route, Switch, BrowserRouter } from "react-router-dom";
-import Carrito from "./components/Carrito.jsx";
-import Card from './components/Card/Card'
+import { Route, Switch } from "react-router-dom";
+import Home from "./components/Home/Home";
+import Carrito from "./components/Carrito"
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Switch>
-          <Route exact path="/carrito" component={Carrito} />
-          <Route exact path="/"  component={Card} />
-        </Switch>
-      </div>
-    </BrowserRouter>
+    <div className="App">
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/Carrito" exact component={Carrito} />
+      </Switch>
+    </div>
   );
 }
 
