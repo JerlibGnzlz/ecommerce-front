@@ -1,15 +1,19 @@
 import React from "react";
 import "./App.css";
-import { Route, Switch } from "react-router-dom";
-import NavBar from "./components/NavBar.jsx";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
+import Carrito from "./components/Carrito.jsx";
+import Card from './components/Card/Card'
 
 function App() {
   return (
-    <div className="App">
-      <Switch>
-        <Route path="/" exact component={NavBar} />
-      </Switch>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Switch>
+          <Route exact path="/carrito" component={Carrito} />
+          <Route exact path="/"  component={Card} />
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 
