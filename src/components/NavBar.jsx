@@ -21,8 +21,8 @@ function NavBar() {
 
   return (
     <div className="bg-primary text-tertiary py-4 flex justify-around  ">
-      <div className="w-25 h-10 bg-black p-2 rounded shadow shadow-tertiary">
-        <img src={logo} alt="logo" className="h-7 w-28 bg-black" />
+      <div>
+        <img src={logo} alt="logo" className="h-7 w-20 " />
       </div>
 
       <div>
