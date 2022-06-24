@@ -62,9 +62,11 @@ function NavBar() {
         </div>
       </Link>
 
-      <button className="bg-secondary px-3 rounded hover:text-white ">
-        Log in
-      </button>
+      <Link to="/login">
+        <button className="bg-secondary px-3 rounded py-1.5 hover:text-white ">
+          Log in
+        </button>
+      </Link>
     </div>
   );
 }
