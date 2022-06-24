@@ -5,8 +5,8 @@
 @layer components {
   .card {
     transition: all 0.5s;
-    @apply bg-gray-300 text-gray-700 w-72 min-h-[10rem] shadow-lg rounded-md overflow-hidden
-      justify-center
+    @apply bg-gray-300 text-gray-700 w-72 min-h-[5rem] shadow-lg rounded-md overflow-hidden
+    justify-center
       m-auto
       mt-10;
   }

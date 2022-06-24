@@ -1,0 +1,26 @@
+.products{
+    font-size: 2vw;
+ display: flex;
+ justify-content: center;
+ margin: 3vw;  
+
+}
+
+.cards2{
+    display: grid;
+  margin: 5vw;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 1vw;
+    row-gap: 2vw;
+}
+
+
+.cards2 {
+    grid-row: 1/10;
+    grid-column: 1/2;
+}
+
+.card2{
+    grid-row: 1/10;
+    grid-column: 1/2;
+}

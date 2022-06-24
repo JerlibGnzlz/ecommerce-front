@@ -15,10 +15,23 @@ import testimonial1 from "./imagenes/testimoniales1.png"
 import testimonial2 from "./imagenes/testimonial2.png"
 import testimonial3 from "./imagenes/testimonial3.png"
 import Footer from '../footer/Footer'
-import NavBar from '../NavBar'
+import {useSelector, useDispatch} from "react-redux"
+import { selectGenero } from '../Redux/action'
+import NavBar from '../NavBar/NavBar'
 import "./Home.css"
 
 export default function Home() {
+
+const dispatch = useDispatch()
+
+function handleCategories(e){
+    console.log(e.target.name, "target")
+    dispatch(selectGenero(e.target.name))
+
+
+}
+
+
 
 
 
@@ -36,7 +49,7 @@ export default function Home() {
             </div>
             <div className="all">
 
-                <h4 className="names">Woman Clothes</h4>
+                <h4 className="names">Women Clothes</h4>
                 <h4 className="names">Men Clothes</h4>
                 <h4 className="names" >Kids Clothes</h4>
                 <h4 className="names">Accessories</h4>
@@ -44,10 +57,13 @@ export default function Home() {
                 <img src={hombre} alt="hombre" />
                 <img src={niños} alt="niños" />
                 <img src={accesorios} alt="accesorios" />
-                <button className="boton">See more</button>
-                <button className="boton">See more</button>
-                <button className="boton">See more</button>
-                <button className="boton">See more</button>
+                
+                 <button onClick={()=>handleCategories()} name="women"className="boton"><a href='/products/women'>See more</a></button>
+                 <button onClick={()=>handleCategories} name="men" className="boton"><a href='/products'>See more</a></button>
+                 <button onClick={()=>handleCategories} name="kids"className="boton"><a href='/products'>See more</a></button>
+                 <button className="boton"><a href='/products'>See more</a></button>
+              
+      
             </div>
 
 
@@ -108,10 +124,12 @@ export default function Home() {
                 <h4>Deliveries</h4>
                 <h4>Rewiews</h4>
                 <h4>Awards Won</h4>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
+                <b></b>
+                <b></b>
+                <b></b>
+                <b></b>
+
+            
 
             </div>
 

@@ -6,25 +6,16 @@
 }
 
 body {
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-
-
-}
-
-.background{
-
     background-color: #F3F3F3;
+
+
 }
 
-/* .portadas {
-    position: relative;
-    left: 5vw;
-    
-    
-} */
+
 
 .slider{
     width: 100%;
@@ -192,7 +183,7 @@ cite {
     top: 6vw;
 }
 
-span {
+b {
     background-color: #C4C4C4;
     transform: rotate(90deg);
     width: 66px;
