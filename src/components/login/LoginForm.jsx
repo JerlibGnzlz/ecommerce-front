@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEnvelope,
+  faLock,
+  faArrowLeft,
+} from "@fortawesome/free-solid-svg-icons";
 
 function LoginForm() {
   const divStyle = {
@@ -15,6 +19,13 @@ function LoginForm() {
         style={divStyle}
         className="flex flex-col text-center h-3/4  w-2/5 rounded-md py-10 bg-primary  "
       >
+        <Link to="/">
+          <div className="bg-white w-12 p-1 ml-6 text-black hover:bg-tertiary hover:text-white rounded">
+            <button>
+              <FontAwesomeIcon icon={faArrowLeft} />
+            </button>
+          </div>
+        </Link>
         <form className="">
           <div className="mb-6 text-4xl font-bold  ">
             <label>Login</label>
