@@ -12,6 +12,7 @@ export const getProduct =
     search = "",
   }) =>
   async (dispatch) => {
+    console.log(search);
     const product = await axios.get("http://localhost:3001/product", {
       params: {
         id: id,

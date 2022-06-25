@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getProduct } from "./Redux/action";
 import { useDispatch } from "react-redux";
 import {
@@ -11,11 +11,13 @@ import {
 import logo from "../img/logo.png";
 
 function NavBar() {
-  const [product] = useState("");
+  const [product, setProduct] = useState("");
   const dispatch = useDispatch();
+  const { genre } = useParams();
 
   const handleChange = (e) => {
-    dispatch(getProduct(e.target.value));
+    setProduct(e.target.value);
+    dispatch(getProduct({ search: product, genre: genre }));
   };
 
   const handleSubmit = (e) => {
@@ -35,9 +37,7 @@ function NavBar() {
 
       <div className="text-black flex ">
         <select className="outline-0 h-8 text-sm text-tertiary w-auto text-center rounded-l bg-secondary hover:cursor-pointer hover:text-white">
-          <option selected value="all">
-            All
-          </option>
+          <option value="DEFAULT">All</option>
           <option value="mens">Mens</option>
           <option value="women">Women</option>
           <option value="kids">Kids</option>
