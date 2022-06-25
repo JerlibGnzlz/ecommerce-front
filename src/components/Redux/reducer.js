@@ -1,4 +1,4 @@
-import { GET_PRODUCT_DETAIL } from "./action";
+import { GET_PRODUCT_DETAIL, RESET } from "./action";
 
 const initialState = {
   detail: [],
@@ -14,6 +14,13 @@ function rootReducer(state = initialState, action) {
         detail: action.payload,
       };
     }
+
+    case RESET:
+        return{
+          ...state,
+          detail: []
+        }
+
 
     default:
       return state;

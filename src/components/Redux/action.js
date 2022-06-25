@@ -1,5 +1,6 @@
 import axios from "axios";
 export const GET_PRODUCT_DETAIL = "GET_PRODUCT_DETAIL";
+export const RESET = 'RESET'
 
 export const getProductDetail = (id) => async (dispatch) => {
   console.log(id, "id");
@@ -12,3 +13,9 @@ export const getProductDetail = (id) => async (dispatch) => {
 
   return dispatch({ type: GET_PRODUCT_DETAIL, payload: product.data });
 };
+
+export const reset=()=>{
+    return (dispatch)=>{
+      dispatch({type: RESET})
+    }
+  }

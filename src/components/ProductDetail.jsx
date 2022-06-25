@@ -1,6 +1,6 @@
 import Navbar from "../components/NavBar";
 import { useSelector, useDispatch } from "react-redux";
-import { getProductDetail } from "./Redux/action";
+import { getProductDetail, reset } from "./Redux/action";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -30,6 +30,9 @@ export default function ProductDetail() {
 
   useEffect(() => {
     dispatch(getProductDetail(id));
+    return()=>{
+      dispatch(reset())
+    }
   }, [dispatch]);
 
   return (
@@ -112,7 +115,7 @@ export default function ProductDetail() {
 
           <div className='p-5 bg-primary'>
           <Link to={"/products"}> 
-          <p className=" text-center text-white">Go to Back</p>
+          <p className=" text-center text-white hover:text-tertiary">Go to Back</p>
           </Link>
           </div>
 
