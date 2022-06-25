@@ -1,13 +1,15 @@
 import React from "react";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
-import Home from "./components/Home/Home";
+import Home from "./components/Home/Home.jsx";
+import LoginForm from "./components/login/LoginForm.jsx";
 
 function App() {
   return (
     <div className="App">
       <Switch>
         <Route path="/" exact component={Home} />
+        <Route path="/login" component={LoginForm} />
       </Switch>
     </div>
   );
