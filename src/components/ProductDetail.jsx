@@ -33,7 +33,7 @@ export default function ProductDetail() {
     return()=>{
       dispatch(reset())
     }
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   return (
     <>
