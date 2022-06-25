@@ -1,5 +1,9 @@
-
-import { GET_PRODUCT, SELECT_GENRES, GET_PRODUCT_DETAIL, RESET } from "./action";
+import {
+  GET_PRODUCT,
+  SELECT_GENRES,
+  GET_PRODUCT_DETAIL,
+  RESET,
+} from "./action";
 
 const initialState = {
   products: [],
@@ -8,10 +12,7 @@ const initialState = {
 };
 
 function rootReducer(state = initialState, action) {
-  console.log(action.payload, "payload");
-
   switch (action.type) {
-
     case GET_PRODUCT_DETAIL: {
       return {
         ...state,
@@ -20,10 +21,10 @@ function rootReducer(state = initialState, action) {
     }
 
     case RESET:
-        return{
-          ...state,
-          detail: []
-        }
+      return {
+        ...state,
+        detail: [],
+      };
 
     case GET_PRODUCT: {
       return {
