@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import { getProduct } from "./Redux/action";
+import { useDispatch } from "react-redux";
 import {
   faLocationDot,
   faMagnifyingGlass,
@@ -9,10 +11,11 @@ import {
 import logo from "../img/logo.png";
 
 function NavBar() {
-  const [product, setProduct] = useState("");
+  const [product] = useState("");
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
-    setProduct(e.target.value);
+    dispatch(getProduct(e.target.value));
   };
 
   const handleSubmit = (e) => {
@@ -62,9 +65,11 @@ function NavBar() {
         </div>
       </Link>
 
-      <button className="bg-secondary px-3 rounded hover:text-white ">
-        Log in
-      </button>
+      <Link to="/login">
+        <button className="bg-secondary px-3 rounded py-1.5 hover:text-white ">
+          Log in
+        </button>
+      </Link>
     </div>
   );
 }
