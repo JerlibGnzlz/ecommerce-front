@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getProductDetail } from "./Redux/action";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 // const product = {
 //   name: "Basic Tee 6-Pack",
@@ -29,7 +29,7 @@ export default function ProductDetail() {
   const { id } = useParams();
 
   useEffect(() => {
-    dispatch(getProductDetail(id))
+    dispatch(getProductDetail(id));
   }, [dispatch]);
 
   return (
@@ -46,7 +46,6 @@ export default function ProductDetail() {
                 className="w-full h-full object-center object-cover"
               />
             </div>
-            
 
             {/* Product info */}
             <div className="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8  lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
@@ -59,10 +58,14 @@ export default function ProductDetail() {
               {/* Description and details */}
               <div className=" mt-10 py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900">Description</h3>
+                  <h3 className="text-xl font-bold text-gray-900">
+                    Description
+                  </h3>
                   <div className="space-y-6">
                     <p className="text-xl text-gray-900">
-                      {productDetail[0] && productDetail[0].description.charAt(0).toUpperCase() + productDetail[0].description.slice(1)}
+                      {productDetail[0] &&
+                        productDetail[0].description.charAt(0).toUpperCase() +
+                          productDetail[0].description.slice(1)}
                     </p>
                   </div>
                 </div>
@@ -71,26 +74,29 @@ export default function ProductDetail() {
                   <h2 className="text-xl font-bold text-gray-900">Category</h2>
 
                   <div className="space-y-6">
-                    <p className="text-xl text-gray-600 capitalize">{productDetail[0] && productDetail[0].genre}</p>
+                    <p className="text-xl text-gray-600 capitalize">
+                      {productDetail[0] && productDetail[0].genre}
+                    </p>
                   </div>
                 </div>
 
-              {/* Sustituir el 4 por productDetail[0].rating */}
-              <h3 className="text-xl mt-7 font-bold text-gray-900">Score</h3>
-              <div className="flex ">
-              {Array(4)
-              .fill()
-              .map((_, i)=>(
-                <p className="text-2xl">&#9733;</p>
-              ))}
-              </div>
-
+                {/* Sustituir el 4 por productDetail[0].rating */}
+                <h3 className="text-xl mt-7 font-bold text-gray-900">Score</h3>
+                <div className="flex ">
+                  {Array(4)
+                    .fill()
+                    .map((_, i) => (
+                      <p className="text-2xl">&#9733;</p>
+                    ))}
+                </div>
               </div>
 
               {/* Options */}
               <div className="mt-4 lg:mt-0 lg:row-span-3">
                 <h2 className="sr-only">Product information</h2>
-                <p className="text-3xl text-gray-900">Price:  ${productDetail[0] && productDetail[0].price}</p>
+                <p className="text-3xl text-gray-900">
+                  Price: ${productDetail[0] && productDetail[0].price}
+                </p>
 
                 <form className="mt-10">
                   <button
@@ -103,8 +109,16 @@ export default function ProductDetail() {
               </div>
             </div>
           </div>
+
+          <div className='p-5 bg-primary'>
+          <Link to={"/products"}> 
+          <p className=" text-center text-white">Go to Back</p>
+          </Link>
+          </div>
+
+
         </div>
-      } 
+      }
     </>
   );
 }
