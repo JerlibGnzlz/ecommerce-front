@@ -5,7 +5,6 @@ import ProductDetail from "./components/ProductDetail";
 import Home from "./components/Home/Home.jsx";
 import LoginForm from "./components/login/LoginForm.jsx";
 
-
 function App() {
   return (
     <div className="App">
