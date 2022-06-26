@@ -26,7 +26,7 @@ function NavBar() {
           <FontAwesomeIcon icon={faShoppingCart} /> Cart
         </div>
       </Link>
-
+      {/* Boton Login */}
       <Link to="/login">
         <button className="bg-secondary px-3 rounded py-1.5 hover:text-white ">
           Log in
