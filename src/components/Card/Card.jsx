@@ -9,7 +9,11 @@ export default function Card({name, price,category,image}) {
   return (
     <div className="card">
       <img
+
         // className="w-300px h-250px object-cover"
+
+        className="object-contain h-52 w-96 "
+
         src={image}
         alt="Pic not found"
       />
@@ -27,7 +31,14 @@ export default function Card({name, price,category,image}) {
 
         <div className="py-5 flex-col gap-3">
           <div className="flex items-center gap-2">
+
       
+
+            {/* <p className="badge">
+              <strong>Stock: </strong>
+              {card.stock}
+            </p> */}
+
             <p className="badge">{category}</p>
           </div>
 
