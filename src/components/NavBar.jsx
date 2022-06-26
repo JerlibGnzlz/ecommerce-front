@@ -10,10 +10,11 @@ import logo from "../img/logo.png";
 function NavBar() {
   return (
     <div className="bg-primary text-tertiary py-4 flex justify-around  ">
-      <div>
-        <img src={logo} alt="logo" className="h-7 w-20 " />
-      </div>
-
+      <Link to="/">
+        <div>
+          <img src={logo} alt="logo" className="h-7 w-20 " />
+        </div>
+      </Link>
       <div>
         <FontAwesomeIcon icon={faLocationDot} className="mx-1" />
         Location
@@ -25,7 +26,7 @@ function NavBar() {
           <FontAwesomeIcon icon={faShoppingCart} /> Cart
         </div>
       </Link>
-
+      {/* Boton Login */}
       <Link to="/login">
         <button className="bg-secondary px-3 rounded py-1.5 hover:text-white ">
           Log in

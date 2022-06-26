@@ -35,9 +35,11 @@ function Search() {
 
   return (
     <div className="bg-primary text-tertiary py-4 flex justify-around  ">
-      <div>
-        <img src={logo} alt="logo" className="h-7 w-20 " />
-      </div>
+      <Link to="/">
+        <div>
+          <img src={logo} alt="logo" className="h-7 w-20 " />
+        </div>
+      </Link>
 
       <div>
         <FontAwesomeIcon icon={faLocationDot} className="mx-1" />
