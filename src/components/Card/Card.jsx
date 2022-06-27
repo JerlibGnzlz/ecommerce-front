@@ -2,23 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import './Card.css'
 
-export default function Card({name, price,category,image}) {
+export default function Card({id,name, price,category,image,brand}) {
 
-  // card = {
-  //   name: "Remera Deportiva",
-  //   precio: "49.99",
-  //   stock: 24,
-  //   img: "https://cdn.solodeportes.com.ar/media/catalog/product/cache/7c4f9b393f0b8cb75f2b74fe5e9e52aa/r/e/remera-flash-entrenamiento-negra-270020w21remene-1.jpg",
-  //   categorias: "Deportivo, Fitness",
-  // };
 
   return (
+    <Link to={`/products/detail/${id}`}>
     <div className="card">
+      <div className="img">
       <img
         className="object-contain h-52 w-96 "
         src={image}
         alt="Pic not found"
-      />
+        />
+        </div>
       <div className='p-5'>
         <h3 className="Product-title" title={name}>
           {name}
@@ -26,10 +22,10 @@ export default function Card({name, price,category,image}) {
 
         <p className="text-xl font-bold">Precio: U$S {price}</p>
 
-        <div className="flex items-center gap-2 mt-1">
+        {/* <div className="flex items-center gap-2 mt-1">
           <span className="text-sm line-through opacity-50">U$S 59.99</span>
           <span className="discount-percent">save 17%</span>
-        </div>
+        </div> */}
 
         <div className="py-5 flex-col gap-3">
           <div className="flex items-center gap-2">
@@ -38,6 +34,8 @@ export default function Card({name, price,category,image}) {
               {card.stock}
             </p> */}
             <p className="badge">{category}</p>
+            <p className="badge">{brand}</p>
+
           </div>
 
           <div className="mt-5 flex gap-2">
@@ -49,5 +47,6 @@ export default function Card({name, price,category,image}) {
         </div>
       </div>
     </div>
+    </Link>
   );
 }
