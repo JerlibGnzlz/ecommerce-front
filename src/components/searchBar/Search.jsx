@@ -22,7 +22,9 @@ function Search() {
   };
 
   const handleChange = (e) => {
-    dispatch(getProduct({ search: e.target.value, genre: genre }));
+    dispatch(
+      getProduct({ search: e.target.value.toLowerCase(), genre: genre })
+    );
   };
 
   if (productState.length === 0) {
