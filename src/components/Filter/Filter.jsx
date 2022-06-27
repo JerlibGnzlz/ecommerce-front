@@ -1,8 +1,9 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState} from 'react'
 import { getProduct,getCategories, getBrand} from '../Redux/action'
+import { Link } from 'react-router-dom'
 import './Filter.css'
 
 export default function Filter() {
@@ -47,11 +48,13 @@ export default function Filter() {
         <div>
             <div className='category'>
                 <h1>Category</h1>
-                <button> <a href='/products'>All Products</a></button>
-                <a href="/products/women"><h2>Women</h2></a>
-                <a href="/products/men"><h2>Men</h2></a>
-                <a href="/products/kids"><h2>Kids</h2></a>
-                <a href="/products/accesories"><h2>Accesories</h2></a>
+                <button> <Link to='/products'>All Products</Link></button>
+              
+                <Link to="/products/women"><h2>Women</h2></Link>
+
+                <Link to="/products/men"><h2>Men</h2></Link>
+                <Link to="/products/kids"><h2>Kids</h2></Link>
+                <Link to="/products/accesories"><h2>Accesories</h2></Link>
 
             </div>
 
@@ -68,9 +71,10 @@ export default function Filter() {
                 <h1>Brands</h1>
             {brands?.map((b)=>{
                 return(
-                <div>
+                <div key={b.id}>
                     
                     <button 
+                    
                     value={b.id}
                     name={b.name} 
                     onClick={(e) => handleCheckBrand(e)}>{b.name}</button>
@@ -83,9 +87,10 @@ export default function Filter() {
             <h1>Categories</h1>
             {categories?.map((c)=>{
                 return(
-                <div>
+                <div  key={c.id}>
                    
                     <button
+                   
                     value={c.id}
                     name={c.name} 
                     onClick={(e) => handleCheck(e)}>{c.name}</button>

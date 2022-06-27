@@ -1,6 +1,4 @@
 
-export default rootReducer;
-
 import {
   GET_PRODUCT,
   GET_CATEGORIES,GET_BRAND,
@@ -10,7 +8,6 @@ import {
 
 const initialState = {
   products: [],
-  genres: "",
   detail: [],
   categories:[],
    brand:[]
@@ -39,12 +36,7 @@ function rootReducer(state = initialState, action) {
       };
     }
 
-    case SELECT_GENRES: {
-      return {
-        ...state,
-        genres: action.payload,
-      };
-    }
+   
         case  GET_CATEGORIES:{
         return{
             ...state,

@@ -15,20 +15,15 @@ import testimonial1 from "./imagenes/testimoniales1.png"
 import testimonial2 from "./imagenes/testimonial2.png"
 import testimonial3 from "./imagenes/testimonial3.png"
 import Footer from '../footer/Footer'
-import {useDispatch} from "react-redux"
-import { selectGenero } from '../Redux/action'
-import NavBar from '../NavBar/NavBar'
+import NavBar from "../NavBar"
 import "./Home.css"
+import { Link } from 'react-router-dom'
 
 export default function Home() {
 
-const dispatch = useDispatch()
-
-function handleCategories(e){
-    dispatch(selectGenero(e.target.name))
 
 
-}
+
 
 
 
@@ -57,10 +52,10 @@ function handleCategories(e){
                 <img src={niños} alt="niños" />
                 <img src={accesorios} alt="accesorios" />
                 
-                 <button onClick={()=>handleCategories()} name="women"className="boton"><a href='/products/women'>See more</a></button>
-                 <button onClick={()=>handleCategories()} name="men" className="boton"><a href='/products/men'>See more</a></button>
-                 <button onClick={()=>handleCategories()} name="kids"className="boton"><a href='/products/kids'>See more</a></button>
-                 <button className="boton"><a href='/products'>See more</a></button>
+                 <button className="boton"><Link to='/products/women'>See more</Link></button>
+                 <button className="boton"><Link to='/products/men'>See more</Link></button>
+                 <button className="boton"><Link to='/products/kids'>See more</Link></button>
+                 <button className="boton"><Link to='/products'>See more</Link></button>
               
       
             </div>

@@ -1,9 +1,10 @@
-import Navbar from "../components/NavBar";
+import Navbar from "../NavBar";
 import { useSelector, useDispatch } from "react-redux";
-import { getProductDetail, reset } from "./Redux/action";
+import { getProductDetail, reset } from "../Redux/action";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import "./Detail.css"
 
 // const product = {
 //   name: "Basic Tee 6-Pack",
@@ -46,7 +47,7 @@ export default function ProductDetail() {
               <img
                 src={productDetail[0] && productDetail[0].image[0]}
                 alt={productDetail[0] && productDetail[0].image[0]}
-                className="w-full h-full object-center object-cover"
+                className="detalle"
               />
             </div>
 

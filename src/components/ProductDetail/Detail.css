@@ -1,0 +1,6 @@
+.detalle{
+    filter: brightness(1.1);
+    mix-blend-mode: multiply;
+    width: 70%;
+    height: 70%;
+}

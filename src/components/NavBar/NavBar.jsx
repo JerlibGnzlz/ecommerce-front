@@ -6,7 +6,7 @@ import {
   faMagnifyingGlass,
   faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
-import logo from  "./img/logo.png"
+import logo from  "../../img/logo.png"
 
 function NavBar() {
   const [product, setProduct] = useState("");
@@ -22,7 +22,9 @@ function NavBar() {
   return (
     <div className="bg-primary text-tertiary py-4 flex justify-around  ">
       <div>
+        <Link to="/">
         <img src={logo} alt="logo" className="h-7 w-20 " />
+        </Link>
       </div>
 
       <div>
