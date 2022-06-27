@@ -58,6 +58,15 @@ function LoginForm() {
               <p className="text-xs">Forgot your password?</p>
             </Link>
           </div>
+
+          <div className="mb-6 mt-1">
+          <Link to="/register">
+              <p className="text-xs">Forgot to register? do it here</p>
+            </Link>
+          </div>
+
+
+
           <div className="mb-3 flex justify-center ">
             <input
               type="submit"

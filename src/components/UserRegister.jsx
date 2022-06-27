@@ -7,6 +7,7 @@ import * as Yup from "yup";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import moment from 'moment'
+import Swal from 'sweetalert2'
 
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
@@ -55,6 +56,13 @@ export const UserRegister = () => {
         // console.log(values);
         axios.post("http://localhost:3001/users", values).then((response) => {
           console.log("Data added successfully.");
+          Swal.fire({
+            // position: 'center',
+            // icon: 'success',
+            title: 'User created successfully',
+            showConfirmButton: false,
+            timer: 2000
+          })
           history.push("/login");
         });
       }}
