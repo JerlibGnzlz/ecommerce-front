@@ -55,7 +55,7 @@ export default function Home() {
                  <button className="boton"><Link to='/products/women'>See more</Link></button>
                  <button className="boton"><Link to='/products/men'>See more</Link></button>
                  <button className="boton"><Link to='/products/kids'>See more</Link></button>
-                 <button className="boton"><Link to='/products'>See more</Link></button>
+                 <button className="boton"><Link to='/products/accesories'>See more</Link></button>
               
       
             </div>
