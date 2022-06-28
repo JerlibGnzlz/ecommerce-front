@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { getProduct, getCategories, getBrand } from "../Redux/action";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./Filter.css";
 
 export default function Filter() {
@@ -87,26 +87,26 @@ export default function Filter() {
 
   return (
     <div>
-      <div className="category">
+      <div className="category ">
         <h1>Category</h1>
         <button>
           {" "}
-          <Link to="/products">All Products</Link>
+          <NavLink to="/products">All Products</NavLink>
         </button>
 
-        <Link to="/products/women">
+        <NavLink to="/products/women" activeStyle={{color:"#036CB6"}}>
           <h2>Women</h2>
-        </Link>
+        </NavLink>
 
-        <Link to="/products/men">
+        <NavLink to="/products/men" activeStyle={{color:"#036CB6"}}>
           <h2>Men</h2>
-        </Link>
-        <Link to="/products/kids">
+        </NavLink>
+        <NavLink to="/products/kids" activeStyle={{color:"#036CB6"}}>
           <h2>Kids</h2>
-        </Link>
-        <Link to="/products/accesories">
+        </NavLink>
+        <NavLink to="/products/accesories"activeStyle={{color:"#036CB6"}}>
           <h2>Accesories</h2>
-        </Link>
+        </NavLink>
       </div>
 
       <div className="price">
@@ -118,15 +118,17 @@ export default function Filter() {
           <option value="DESC">Higher price</option>
         </select>
       </div>
-      <div className="brands">
+      <div className="brands ">
         <h1>Brands</h1>
         {brands?.map((b) => {
           return (
             <div key={b.id}>
-              <button
+          <button
                 value={b.id}
                 name={b.name}
-                onClick={(e) => handleCheckBrand(e)}
+                
+                onClick={(e) => handleCheckBrand(e) }  
+               
               >
                 {b.name}
               </button>
@@ -144,6 +146,7 @@ export default function Filter() {
                 value={c.id}
                 name={c.name}
                 onClick={(e) => handleCheck(e)}
+          
               >
                 {c.name}
               </button>

@@ -74,6 +74,7 @@ useEffect(() => {
             </div>
             <Paginado
         productPerPage={productPerPage}
+        currentPage={currentPage}
         Products={Products.length}
         paginado={paginado}
       />

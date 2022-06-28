@@ -2,21 +2,21 @@ import React from "react";
 
 export default function Paginado({ productPerPage, Products, paginado, currentPage }) {
   const pageNumbers = [];
-  // currentPage={paginaActual}
+
+  
   for (let i = 1; i <= Math.ceil(Products / productPerPage); i++) {
     pageNumbers.push(i);
   }
-
+  const last=pageNumbers[pageNumbers.length-1]
+  
   return (
     <nav>
       <ul className="flex justify-center ">
         <li>
-          <a
-            href="#prev"
-            className="py-2 px-3 ml-0 leading-tight text-gray-500 bg-gray-800 rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-          >
-            {"<<prev"}
-          </a>
+          {currentPage!==1? <button
+          onClick={() => paginado(currentPage>1?currentPage-1:currentPage)}
+          className="py-2 px-3 ml-0 leading-tight text-gray-500 bg-gray-800 rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+          >prev</button>:null}
         </li>
         {pageNumbers &&
           pageNumbers.map((number) => {
@@ -35,12 +35,12 @@ export default function Paginado({ productPerPage, Products, paginado, currentPa
             );
           })}
         <li>
-          <a
-            href="#next"
+          {currentPage!==last?<button
+             onClick={(e) => paginado(currentPage<last?currentPage+1:currentPage)}
             className="py-2 px-3 leading-tight text-gray-500 bg-gray-800 rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
           >
-            {"next>>"}
-          </a>
+            next
+          </button>:null}
         </li>
       </ul>
     </nav>
