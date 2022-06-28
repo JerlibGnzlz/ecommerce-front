@@ -40,9 +40,9 @@ export default function ProductDetail() {
     <>
       <Navbar />
       {
-        <div className="pt-6">
+        <div className="pt-4">
           {/* Image gallery */}
-          <div className="mt-14 max-w-2xl mb-20 mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">
+          <div className="mt-10 max-w-2xl mb-20 mx-auto sm:px-6 lg:max-w-5xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-x-2">
             <div className="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
               <img
                 src={productDetail[0] && productDetail[0].image[0]}
@@ -51,16 +51,16 @@ export default function ProductDetail() {
               />
             </div>
 
-            {/* Product info */}
-            <div className="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8  lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
+            {/* Product name */}
+            <div className="max-w-xl mx-auto px-4 sm:px-6 lg:max-w-xl lg:pt-5 lg:px-8 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
               <div className="lg:col-span-5 lg:pr-10 ">
-                <h1 className="text-5xl font-extrabold tracking-tight text-gray-900 capitalize ">
+                <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 capitalize ">
                   {productDetail[0] && productDetail[0].name}
                 </h1>
               </div>
 
-              {/* Description and details */}
-              <div className=" mt-10 py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+              {/* Product Description & category */}
+              <div className=" mt-2 py-10 lg:pt-6 lg:pb-6 lg:col-start-1 lg:col-span-2">
                 <div>
                   <h3 className="text-xl font-bold text-gray-900">
                     Description
@@ -74,7 +74,7 @@ export default function ProductDetail() {
                   </div>
                 </div>
 
-                <div className="mt-10">
+                <div className="mt-2">
                   <h2 className="text-xl font-bold text-gray-900">Category</h2>
 
                   <div className="space-y-6">
@@ -84,8 +84,9 @@ export default function ProductDetail() {
                   </div>
                 </div>
 
+                {/* Product Score */}
                 {/* Sustituir el 4 por productDetail[0].rating */}
-                <h3 className="text-xl mt-7 font-bold text-gray-900">Score</h3>
+                <h3 className=" mt-2 text-xl font-bold text-gray-900">Score</h3>
                 <div className="flex ">
                   {Array(4)
                     .fill()
@@ -95,14 +96,15 @@ export default function ProductDetail() {
                 </div>
               </div>
 
-              {/* Options */}
+              {/* Product price */}
               <div className="mt-4 lg:mt-0 lg:row-span-3">
                 <h2 className="sr-only">Product information</h2>
-                <p className="text-3xl text-gray-900">
-                  Price: ${productDetail[0] && productDetail[0].price}
+                <p className="text-3xl font-bold text-gray-900">
+                  ${productDetail[0] && productDetail[0].price}
                 </p>
 
-                <form className="mt-10">
+                {/* Product bottom cart */}
+                <form classname=''>
                   <button
                     type="submit"
                     className="mt-10 w-full bg-primary border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -114,9 +116,10 @@ export default function ProductDetail() {
             </div>
           </div>
 
-          <div className='p-5 bg-primary'>
+          {/* Bottom Back */}
+          <div className='w-full h-16 fixed bottom-0 mt-28 bg-primary'>
           <Link to={"/products"}> 
-          <p className=" text-center text-white hover:text-tertiary">Go to Back</p>
+          <p className="text-center mt-5 text-white hover:text-tertiary">Go to Back</p>
           </Link>
           </div>
 
