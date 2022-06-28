@@ -47,7 +47,7 @@ export default function ProductDetail() {
               <img
                 src={productDetail[0] && productDetail[0].image[0]}
                 alt={productDetail[0] && productDetail[0].image[0]}
-                className="detalle"
+                className="object-contain h-96 w-96 detalle"
               />
             </div>
 
