@@ -11,7 +11,7 @@
     
 }
 
-.category h2{
+.category button{
     position: relative;
     font-size: 1vw;
 
@@ -35,6 +35,7 @@
 .price{
     position: relative;
     top: 3.8vw;
+   
 }
 .price h1{
     font-size: 1.2vw;
