@@ -112,7 +112,7 @@ export default function Filter() {
       <div className="price">
         <h1>Price</h1>
 
-        <select onChange={(e) => handleOrderPrice(e)}>
+        <select onChange={(e) => handleOrderPrice(e)} className="border-solid border-2 border-black">
           <option value="">select price</option>
           <option value="ASC">Lower price</option>
           <option value="DESC">Higher price</option>
@@ -120,13 +120,14 @@ export default function Filter() {
       </div>
       <div className="brands ">
         <h1>Brands</h1>
+
         {brands?.map((b) => {
           return (
             <div key={b.id}>
           <button
                 value={b.id}
                 name={b.name}
-                
+                className="hover:bg-blue-200 active:bg-violet-200 focus:bg-blue-200 rounded-sm flex inline"
                 onClick={(e) => handleCheckBrand(e) }  
                
               >
@@ -146,7 +147,7 @@ export default function Filter() {
                 value={c.id}
                 name={c.name}
                 onClick={(e) => handleCheck(e)}
-          
+                className="hover:bg-blue-200 active:bg-blue-200 focus:bg-blue-200 rounded-sm flex inline"
               >
                 {c.name}
               </button>
