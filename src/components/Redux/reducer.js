@@ -1,17 +1,18 @@
-
 import {
   GET_PRODUCT,
-  GET_CATEGORIES,GET_BRAND,
+  GET_CATEGORIES,
+  GET_BRAND,
   GET_PRODUCT_DETAIL,
   RESET,
+  TOP_SELLERS,
 } from "./action";
 
 const initialState = {
   products: [],
   detail: [],
-  categories:[],
-   brand:[]
-  
+  categories: [],
+  brand: [],
+  topSel: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -36,20 +37,25 @@ function rootReducer(state = initialState, action) {
       };
     }
 
-   
-        case  GET_CATEGORIES:{
-        return{
-            ...state,
-            categories:action.payload
-        }
+    case GET_CATEGORIES: {
+      return {
+        ...state,
+        categories: action.payload,
+      };
     }
-    
-    case  GET_BRAND:{
-        return{
-            ...state,
-            brand:action.payload
-        }
+
+    case GET_BRAND: {
+      return {
+        ...state,
+        brand: action.payload,
+      };
     }
+
+    case TOP_SELLERS:
+      return {
+        ...state,
+        topSel: action.payload,
+      };
 
     default:
       return state;
@@ -57,4 +63,3 @@ function rootReducer(state = initialState, action) {
 }
 
 export default rootReducer;
-
