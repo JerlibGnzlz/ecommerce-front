@@ -4,13 +4,16 @@ import {
   GET_CATEGORIES,GET_BRAND,
   GET_PRODUCT_DETAIL,
   RESET,
+  DELETE_CART,
 } from "./action";
 
 const initialState = {
   products: [],
   detail: [],
   categories:[],
-   brand:[]
+   brand:[],
+  cart:[],
+  
   
 };
 
@@ -50,6 +53,15 @@ function rootReducer(state = initialState, action) {
             brand:action.payload
         }
     }
+    case  DELETE_CART:{
+      return{
+          ...state,
+          cart:action.payload
+      }
+  }
+
+
+
 
     default:
       return state;

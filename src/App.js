@@ -5,6 +5,7 @@ import ProductDetail from "./components/ProductDetail/ProductDetail";
 import Home from "./components/Home/Home.jsx";
 import LoginForm from "./components/login/LoginForm.jsx";
 import { UserRegister } from "./components/UserRegister";
+import cart from "./components/ShoppingCart/ShopppingCart"
 
 import Products from "./components/Products/Products";
 
@@ -20,6 +21,8 @@ function App() {
         <Route path="/products/detail/:id" exact component={ProductDetail} />
         <Route path="/login" component={LoginForm} />
         <Route path="/register" component={UserRegister} />
+        <Route path="/cart" component={cart} />
+
 
 
       </Switch>

@@ -6,6 +6,8 @@ export const GET_CATEGORIES = "GET_CATEGORIES";
 export const GET_BRAND= "GET_BRAND";
 export const GET_PRODUCT_DETAIL = "GET_PRODUCT_DETAIL";
 export const RESET = "RESET";
+export const DELETE_CART= "DELETE_CART"
+
 
 
 
@@ -76,6 +78,16 @@ export const reset = () => {
     dispatch({ type: RESET });
   };
 };
+
+export const deleteCart = () => {
+  return (dispatch) => {
+    dispatch({ type: DELETE_CART });
+  };
+};
+
+
+
+
 
 
 
