@@ -14,7 +14,7 @@ function TopSellers() {
   return (
     <div className="w-screen h-auto flex flex-row justify-around">
       {products.map((e) => (
-        <Link to={`/products/detail/${e.id}`}>
+        <Link to={`/products/detail/${e.id}`} key={e.id}>
           <div className="w-64 h-72">
             <div className="img">
               <img src={e.image} alt="Not found" className="w-64 h-72" />

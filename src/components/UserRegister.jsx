@@ -6,13 +6,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as Yup from "yup";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import moment from 'moment'
-import Swal from 'sweetalert2'
+import moment from "moment";
+import Swal from "sweetalert2";
+import { useAuth } from "../context/AuthContext.js";
 
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 export const UserRegister = () => {
   const history = useHistory();
+  const { signup } = useAuth();
 
   const validate = Yup.object({
     names: Yup.string()
@@ -23,18 +25,22 @@ export const UserRegister = () => {
       .min(2, "Too Short!")
       .max(50, "Too Long!")
       .required("Required"),
+    password: Yup.string()
+      .min(6, "Must be at least 6 charaters")
+      .required("Required"),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref("password"), null], "Password must match")
+      .required("Confirm password is required"),
     email: Yup.string().email("Invalid email").required("Required"),
-    phone: Yup.string()
-    .matches(
-      /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
-      "Phone number is not valid"
-    ),
+    // phone: Yup.string().matches(
+    //   /^((\\+[1-9]{1,4}[ \\-])|(\\([0-9]{2,3}\\)[ \\-])|([0-9]{2,4})[ \\-])?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
+    //   "Phone number is not valid"
+    // ),
     birthDate: Yup.string()
       .required("Required")
-      .test("DOB", "Please choose a valid date of birth", (value) => {
+      .test("DOB", "Choose a valid date of birth", (value) => {
         return moment().diff(moment(value), "years") >= 18;
       }),
-
   });
 
   const divStyle = {
@@ -50,19 +56,28 @@ export const UserRegister = () => {
         email: "",
         phone: "",
         birthDate: "",
+        password: "",
+        confirmPassword: "",
       }}
       validationSchema={validate}
-      onSubmit={(values) => {
+      onSubmit={async (values) => {
         // console.log(values);
+
+        try {
+          await signup(values.email, values.password);
+        } catch (error) {
+          console.log(error.message);
+        }
+
         axios.post("http://localhost:3001/users", values).then((response) => {
           console.log("Data added successfully.");
           Swal.fire({
             // position: 'center',
             // icon: 'success',
-            title: 'User created successfully',
+            title: "User created successfully",
             showConfirmButton: false,
-            timer: 2000
-          })
+            timer: 2000,
+          });
           history.push("/login");
         });
       }}
@@ -102,6 +117,20 @@ export const UserRegister = () => {
                 name="lastNames"
                 type="text"
                 placeholder="Doe"
+              />
+
+              <TextField
+                label="Password"
+                name="password"
+                type="password"
+                placeholder="**"
+              />
+
+              <TextField
+                label="Confirm Password"
+                name="confirmPassword"
+                type="password"
+                placeholder="**"
               />
 
               <TextField

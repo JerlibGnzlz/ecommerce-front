@@ -1,4 +1,5 @@
 import React from "react";
+import { useAuth } from "../context/AuthContext.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import {
@@ -8,6 +9,14 @@ import {
 import logo from "../img/logo.png";
 
 function NavBar() {
+  const { user, logout } = useAuth();
+
+  const handleLogout = async () => {
+    await logout();
+  };
+
+  let welcome = user ? "Hello, " + user.email : "Hello, Guest";
+
   return (
     <div className="bg-primary text-tertiary py-4 flex justify-around  ">
       <Link to="/">
@@ -20,18 +29,20 @@ function NavBar() {
         Location
       </div>
 
-      <div>Hello, Guest</div>
+      <div>{welcome}</div>
       <Link to="">
         <div className="hover:text-white">
           <FontAwesomeIcon icon={faShoppingCart} /> Cart
         </div>
       </Link>
       {/* Boton Login */}
-      <Link to="/login">
-        <button className="bg-secondary px-3 rounded py-1.5 hover:text-white ">
-          Log in
-        </button>
-      </Link>
+
+      <button
+        onClick={handleLogout}
+        className="bg-secondary px-3 rounded py-1.5 hover:text-white "
+      >
+        {user ? "Log out" : <Link to="/login">Log in</Link>}
+      </button>
     </div>
   );
 }
