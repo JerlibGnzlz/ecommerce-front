@@ -86,33 +86,47 @@ function Cart({name,brandName,id,image}) {
 
   return (
     <div>
- 
-            <>
+      <>
+        <div className="m-1 w-full grid gap-4 grid-cols-4 border-t-2 border-gray-300">
+          <img
+            className="pict object-contain w-48 h-36 p-2 "
+            src={image}
+            alt="Pic Not Found"
+          />
+          <div>
+            <h1 className="capitalize text-2xl mt-4 font-semibold">{name}</h1>
+            <p className="capitalize text-lg">{brandName}</p>
+          </div>
+          <div className="m-auto">
+          <button
+            className="text-lg font-semibold mx-1 box-border h-2 w-2 p-4 border-2 rounded-lg inline-flex justify-center items-center border-gray-400"
+            name="mas"
+            onClick={(e) => counter(e)}
+            >
+            +
+          </button>
+          <h1 className="text-lg font-semibold mx-1 box-border h-2 w-2 p-4 border-2 rounded-lg inline-flex justify-center items-center border-gray-400">
+            {contador2[0].cantidad > 0 ? contador2[0].cantidad : null}
+          </h1>
+          <button
+            className="text-lg font-semibold mx-1 box-border h-2 w-2 p-4 border-2 rounded-lg inline-flex justify-center items-center border-gray-400"
+            name="menos"
+            onClick={(e) => counter(e)}
+            >
+            -
+          </button>
+            </div>
 
-              <div className="m-1 w-full grid gap-4 grid-cols-4 border-t-2 border-gray-300">
-                <img
-                  className="pict object-contain w-48 h-36 p-2 "
-                  src={image}
-                  alt="Pic Not Found"
-                />
-                <div>
-                  <h1 className="capitalize text-2xl mt-4 font-semibold">
-                    {name}
-                  </h1>
-                  <p className="capitalize text-lg">{brandName}</p>
-                </div>
-              <button name="mas" onClick={(e)=> counter(e)}>+</button>
-              <h1>{contador2[0].cantidad>0?contador2[0].cantidad:null}</h1>
-              <button name="menos" onClick={(e)=> counter(e)}>-</button>
-
-              <div className="flex justify-end">
-                <button onClick={e=> handleDelete(e)} className=" box-content h-4 w-4 p-1 text-xl font-light ">
-                  x
-                </button>
-              </div>
-              </div>
-            </>
-        
+          <div className="flex justify-end">
+            <button
+              onClick={(e) => handleDelete(e)}
+              className=" box-content h-4 w-4 p-1 text-xl font-light "
+            >
+              x
+            </button>
+          </div>
+        </div>
+      </>
     </div>
   );
 }
