@@ -6,16 +6,14 @@ import {useField, ErrorMessage} from 'formik'
 export const TextField = ({ label, ...props }) => {
     const [field, meta] = useField(props);
     return (
-        
-      <div className="mb-2">
+   
+      <div className="mb-4">
         <label htmlFor={field.name}>{label}</label>
         
-        <div className="mb-3 flex justify-center ">
-            <div className="bg-tertiary w-6 rounded-l flex justify-center items-center pl-3">
-            </div>
-        
+        <div className="mb-3 flex justify-center">
+            
         <input
-          className={`p-2 w-60 outline-none rounded-r text-sm  text-black font-bold placeholder:text-slate-500 bg-tertiary placeholder:pl-2 " ${meta.touched && meta.error && 'is-invalid'}`}
+          className={`p-2 ml-5 w-60 outline-none rounded text-sm  text-black font-bold placeholder:text-slate-500 bg-tertiary placeholder:pl-2 " ${meta.touched && meta.error && 'is-invalid'}`}
           {...field} {...props}
           autoComplete="off"
         />
