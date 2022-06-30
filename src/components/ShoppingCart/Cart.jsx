@@ -3,86 +3,57 @@ import { useState } from "react";
 
 // import { deleteCart } from "../Redux/action";
 
-
-
-
-function Cart({name,brandName,id,image}) {
-
-
+function Cart({ name, brandName, id, image }) {
   let cart;
   let product;
   cart = localStorage.getItem("cart");
   product = JSON.parse(cart);
 
-  let stock=5
+  let stock = 5;
 
-  const [count, setCount] = useState(1)
+  const [count, setCount] = useState(1);
 
-  let contador2=product.filter(e=> e.id === id)
-  console.log(contador2[0].cantidad, "con2")
+  let contador2 = product.filter((e) => e.id === id);
+  console.log(contador2[0].cantidad, "con2");
 
+  function counter(e) {
+    e.preventDefault();
+    const { name } = e.target;
 
+    if (name === "mas") {
+      if (product.find((p) => p.id === id).cantidad < stock) {
+        product.find((p) => p.id === id).cantidad += 1;
+        let contador = product.filter((e) => e.id === id);
 
+        setCount(contador[0].cantidad);
 
-  function counter(e){
-  e.preventDefault()
-  const {name}=e.target
-  
-  
-  if(name==="mas"){
-    if(product.find(p=>p.id === id).cantidad<stock){
+        localStorage.setItem("cart", JSON.stringify(product));
+      } else {
+        alert("No hay mas stock");
+      }
+    } else if (name === "menos") {
+      if (
+        product.find((p) => p.id === id).cantidad <= stock &&
+        product.find((p) => p.id === id).cantidad > 1
+      ) {
+        product.find((p) => p.id === id).cantidad -= 1;
 
-      product.find(p=>p.id === id).cantidad+=1
-      let contador=product.filter(e=> e.id === id)
+        let contador = product.filter((e) => e.id === id);
 
-      setCount(contador[0].cantidad) 
-      
-      
-      localStorage.setItem("cart",JSON.stringify(product))
+        setCount(contador[0].cantidad);
 
-
-    }else{
-      alert("No hay mas stock")
+        localStorage.setItem("cart", JSON.stringify(product));
+      }
     }
-  }else if(name==="menos"){
-    if(product.find(p=>p.id === id).cantidad<=stock&&product.find(p=>p.id === id).cantidad>1){
- 
-      
-      product.find(p=>p.id ===id).cantidad-=1
-
-      let contador=product.filter(e=> e.id === id
-     
-        )
-  
-        setCount(contador[0].cantidad) 
-
-
-      localStorage.setItem("cart",JSON.stringify(product))
-
-  }
-  
-}
-
   }
 
-  function handleDelete(e){
-    e.preventDefault()
-  // dispatch(deleteCart(id))
-  const filter=product.filter((e)=>e.id !==id)
-  localStorage.removeItem("cart")
-  localStorage.setItem("cart",JSON.stringify(filter))
-  
-  
+  function handleDelete(e) {
+    e.preventDefault();
+    // dispatch(deleteCart(id))
+    const filter = product.filter((e) => e.id !== id);
+    localStorage.removeItem("cart");
+    localStorage.setItem("cart", JSON.stringify(filter));
   }
-
-  
-
-
-
-
-
-
-
 
   return (
     <div>
@@ -98,24 +69,24 @@ function Cart({name,brandName,id,image}) {
             <p className="capitalize text-lg">{brandName}</p>
           </div>
           <div className="m-auto">
-          <button
-            className="text-lg font-semibold mx-1 box-border h-2 w-2 p-4 border-2 rounded-lg inline-flex justify-center items-center border-gray-400"
-            name="mas"
-            onClick={(e) => counter(e)}
+            <button
+              className="text-lg font-semibold mx-1 box-border h-2 w-2 p-4 border-2 rounded-lg inline-flex justify-center items-center border-gray-400"
+              name="mas"
+              onClick={(e) => counter(e)}
             >
-            +
-          </button>
-          <h1 className="text-lg font-semibold mx-1 box-border h-2 w-2 p-4 border-2 rounded-lg inline-flex justify-center items-center border-gray-400">
-            {contador2[0].cantidad > 0 ? contador2[0].cantidad : null}
-          </h1>
-          <button
-            className="text-lg font-semibold mx-1 box-border h-2 w-2 p-4 border-2 rounded-lg inline-flex justify-center items-center border-gray-400"
-            name="menos"
-            onClick={(e) => counter(e)}
+              +
+            </button>
+            <h1 className="text-lg font-semibold mx-1 box-border h-2 w-2 p-4 border-2 rounded-lg inline-flex justify-center items-center border-gray-400">
+              {contador2[0].cantidad > 0 ? contador2[0].cantidad : null}
+            </h1>
+            <button
+              className="text-lg font-semibold mx-1 box-border h-2 w-2 p-4 border-2 rounded-lg inline-flex justify-center items-center border-gray-400"
+              name="menos"
+              onClick={(e) => counter(e)}
             >
-            -
-          </button>
-            </div>
+              -
+            </button>
+          </div>
 
           <div className="flex justify-end">
             <button
