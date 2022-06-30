@@ -138,7 +138,7 @@ export const UserRegister = () => {
               /> */}
 
               <TextField
-                label="BirthDate"
+                label="Birthdate"
                 name="birthDate"
                 type="text"
                 placeholder="yyyy-mm-dd"
