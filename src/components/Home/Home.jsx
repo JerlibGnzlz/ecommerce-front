@@ -14,11 +14,18 @@ import gorra from "./imagenes/gorra.png"
 import testimonial1 from "./imagenes/testimoniales1.png"
 import testimonial2 from "./imagenes/testimonial2.png"
 import testimonial3 from "./imagenes/testimonial3.png"
-import Footer from '../footer/footer'
-import NavBar from '../NavBar/NavBar'
-import "./home.css"
+import Footer from '../footer/Footer'
+import NavBar from "../NavBar"
+import "./Home.css"
+import { Link } from 'react-router-dom'
 
-export default function home() {
+export default function Home() {
+
+
+
+
+
+
 
 
 
@@ -36,7 +43,7 @@ export default function home() {
             </div>
             <div className="all">
 
-                <h4 className="names">Woman Clothes</h4>
+                <h4 className="names">Women Clothes</h4>
                 <h4 className="names">Men Clothes</h4>
                 <h4 className="names" >Kids Clothes</h4>
                 <h4 className="names">Accessories</h4>
@@ -44,10 +51,13 @@ export default function home() {
                 <img src={hombre} alt="hombre" />
                 <img src={niños} alt="niños" />
                 <img src={accesorios} alt="accesorios" />
-                <button className="boton">See more</button>
-                <button className="boton">See more</button>
-                <button className="boton">See more</button>
-                <button className="boton">See more</button>
+                
+                 <button className="boton"><Link to='/products/women'>See more</Link></button>
+                 <button className="boton"><Link to='/products/men'>See more</Link></button>
+                 <button className="boton"><Link to='/products/kids'>See more</Link></button>
+                 <button className="boton"><Link to='/products/accesories'>See more</Link></button>
+              
+      
             </div>
 
 
@@ -108,10 +118,12 @@ export default function home() {
                 <h4>Deliveries</h4>
                 <h4>Rewiews</h4>
                 <h4>Awards Won</h4>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
+                <b></b>
+                <b></b>
+                <b></b>
+                <b></b>
+
+            
 
             </div>
 

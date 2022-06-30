@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import "./footer.css"
+import "./Footer.css"
 
 export default function footer() {
     return (
@@ -23,9 +23,9 @@ export default function footer() {
                 <NavLink to="#"><h5>Contact Us</h5></NavLink>
                 <h6>© 2022 Free Style. All rights reserved</h6>
             </div>
-           
 
-            
+
+
 
         </div>
 

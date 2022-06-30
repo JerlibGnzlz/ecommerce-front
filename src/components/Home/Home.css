@@ -10,27 +10,18 @@ body {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    
-    
-}
-
-.background{
-    
     background-color: #F3F3F3;
+
+
 }
 
-/* .portadas {
-    position: relative;
-    left: 5vw;
-    
-    
-} */
+
 
 .slider{
     width: 100%;
     margin: auto;
     overflow: hidden;
-    
+
 
 }
 
@@ -69,23 +60,23 @@ body {
     position: relative;
     left: 2vw;
     top: 2vw;
-    
-    
-    
+
+
+
 }
 
 .names {
     position: relative;
     left: 5vw;
-    
-    
-    
+
+
+
 }
 
 
 
 .boton {
-    
+
     font-size: 0.9vw;
     position: relative;
     left:6vw;
@@ -105,7 +96,7 @@ body {
 
 
 .Top {
-    
+
     font-size: 1.5VW;
     position: relative;
     top: 80px;
@@ -192,7 +183,7 @@ cite {
     top: 6vw;
 }
 
-span {
+b {
     background-color: #C4C4C4;
     transform: rotate(90deg);
     width: 66px;
@@ -215,4 +206,4 @@ span {
     position: relative;
     left: 8vw;
     top: 13vw
-}
+} 

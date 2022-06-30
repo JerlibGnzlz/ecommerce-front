@@ -1,19 +1,35 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { getProduct } from "../Redux/action.js";
+import { useDispatch, useSelector } from "react-redux";
 import {
   faLocationDot,
   faMagnifyingGlass,
   faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
-import logo from  "../../img/logo.png"
+import logo from "../../img/logo.png";
 
-function NavBar() {
-  const [product, setProduct] = useState("");
+function Search() {
+  const [product] = useState();
+  const dispatch = useDispatch();
+  const { genre } = useParams();
+  const productState = useSelector((state) => state.products);
+  let StyleInput = {};
+  let StyleError = {
+    color: "red",
+    textShadow: "1px 1px 3px black",
+  };
 
   const handleChange = (e) => {
-    setProduct(e.target.value);
+    dispatch(
+      getProduct({ search: e.target.value.toLowerCase(), genre: genre })
+    );
   };
+
+  if (productState.length === 0) {
+    StyleInput = StyleError;
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,11 +37,11 @@ function NavBar() {
 
   return (
     <div className="bg-primary text-tertiary py-4 flex justify-around  ">
-      <div>
-        <Link to="/">
-        <img src={logo} alt="logo" className="h-7 w-20 " />
-        </Link>
-      </div>
+      <Link to="/">
+        <div>
+          <img src={logo} alt="logo" className="h-7 w-20 " />
+        </div>
+      </Link>
 
       <div>
         <FontAwesomeIcon icon={faLocationDot} className="mx-1" />
@@ -34,9 +50,7 @@ function NavBar() {
 
       <div className="text-black flex ">
         <select className="outline-0 h-8 text-sm text-tertiary w-auto text-center rounded-l bg-secondary hover:cursor-pointer hover:text-white">
-          <option selected value="all">
-            All
-          </option>
+          <option value="all">All</option>
           <option value="mens">Mens</option>
           <option value="women">Women</option>
           <option value="kids">Kids</option>
@@ -46,7 +60,8 @@ function NavBar() {
           type="search"
           value={product}
           onChange={handleChange}
-          className=" w-80 outline-0 text-black px-1 h-8 "
+          className=" w-80 outline-0 text-black px-1 h-8 font-bold "
+          style={StyleInput}
         />
 
         <button
@@ -64,11 +79,13 @@ function NavBar() {
         </div>
       </Link>
 
-      <button className="bg-secondary px-3 rounded hover:text-white ">
-        Log in
-      </button>
+      <Link to="/login">
+        <button className="bg-secondary px-3 rounded py-1.5 hover:text-white ">
+          Log in
+        </button>
+      </Link>
     </div>
   );
 }
 
-export default NavBar;
+export default Search;
