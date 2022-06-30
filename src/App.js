@@ -8,6 +8,8 @@ import { UserRegister } from "./components/UserRegister";
 
 import Products from "./components/Products/Products";
 
+import Checkout from "./components/Checkout/Checkout.jsx";
+
 function App() {
   return (
     <div className="App">
@@ -20,6 +22,9 @@ function App() {
         <Route path="/products/detail/:id" exact component={ProductDetail} />
         <Route path="/login" component={LoginForm} />
         <Route path="/register" component={UserRegister} />
+
+        <Route path="/checkout" component={Checkout} />
+
 
 
       </Switch>
