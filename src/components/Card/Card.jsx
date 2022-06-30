@@ -20,7 +20,7 @@ export default function Card({ id, name, price, category, image, brand, handleAd
   }
 
   return (
-    <Link to={`/products/detail/${id}`}>
+    <Link to={`/detail/${id}`}>
       <div className="card">
         <div className="img">
           <img

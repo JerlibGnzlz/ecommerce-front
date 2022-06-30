@@ -1,13 +1,14 @@
-import { React, useEffect } from "react";
+import { React } from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { deleteCart } from "../Redux/action";
+
+// import { deleteCart } from "../Redux/action";
+
 
 
 
 function Cart({name,brandName,id,image}) {
 
-  const dispatch = useDispatch()
+
   let cart;
   let product;
   cart = localStorage.getItem("cart");
@@ -44,7 +45,7 @@ function Cart({name,brandName,id,image}) {
       alert("No hay mas stock")
     }
   }else if(name==="menos"){
-    if(product.find(p=>p.id === id).cantidad<=stock&&product.find(p=>p.id == id).cantidad>1){
+    if(product.find(p=>p.id === id).cantidad<=stock&&product.find(p=>p.id === id).cantidad>1){
  
       
       product.find(p=>p.id ===id).cantidad-=1
@@ -66,7 +67,7 @@ function Cart({name,brandName,id,image}) {
 
   function handleDelete(e){
     e.preventDefault()
-  dispatch(deleteCart(id))
+  // dispatch(deleteCart(id))
   const filter=product.filter((e)=>e.id !==id)
   localStorage.removeItem("cart")
   localStorage.setItem("cart",JSON.stringify(filter))

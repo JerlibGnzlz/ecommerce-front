@@ -24,8 +24,7 @@ const currentProduct = Products.slice(
   indexOfLastProduct
 );
 
-// console.log(currentProduct, "Estos son los primeros productos");
-// console.log(setproductPerPage)
+
 
 function paginado(pageNumber) {
   setCurrentPage(pageNumber);

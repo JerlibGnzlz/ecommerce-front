@@ -1,6 +1,6 @@
 import { React } from "react";
 import Cart from "./Cart";
-import { useEffect,useState } from "react";
+import { useEffect} from "react";
 import "./Carts.css"
 
 
@@ -14,7 +14,7 @@ product = JSON.parse(cart);
 useEffect(() => {
     const cart2= localStorage.getItem("cart");
     const product2 = JSON.parse(cart2);
-    console.log(product2, "producttt")
+
 },[cart])
 
 
@@ -31,7 +31,7 @@ useEffect(() => {
                   key={e.id}
                   name={e.name}
                   image={e.image}
-                  brandName={e.brandName}
+                  brandName={e.brand.name}
                   
         />
             
