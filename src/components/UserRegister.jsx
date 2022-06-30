@@ -6,8 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as Yup from "yup";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import moment from 'moment'
-import Swal from 'sweetalert2'
+import moment from "moment";
+import Swal from "sweetalert2";
 
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
@@ -23,18 +23,22 @@ export const UserRegister = () => {
       .min(2, "Too Short!")
       .max(50, "Too Long!")
       .required("Required"),
+    password: Yup.string()
+      .min(6, "Must be at least 6 charaters")
+      .required("Required"),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref("password"), null], "Password must match")
+      .required("Confirm password is required"),
     email: Yup.string().email("Invalid email").required("Required"),
-    phone: Yup.string()
-    .matches(
-      /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
-      "Phone number is not valid"
-    ),
+    // phone: Yup.string().matches(
+    //   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
+    //   "Phone number is not valid"
+    // ),
     birthDate: Yup.string()
       .required("Required")
-      .test("DOB", "Please choose a valid date of birth", (value) => {
+      .test("DOB", "Choose a valid date of birth", (value) => {
         return moment().diff(moment(value), "years") >= 18;
       }),
-
   });
 
   const divStyle = {
@@ -48,7 +52,9 @@ export const UserRegister = () => {
         names: "",
         lastNames: "",
         email: "",
-        phone: "",
+        password: '',
+        confirmPassword: '',
+        // phone: "",
         birthDate: "",
       }}
       validationSchema={validate}
@@ -59,10 +65,10 @@ export const UserRegister = () => {
           Swal.fire({
             // position: 'center',
             // icon: 'success',
-            title: 'User created successfully',
+            title: "User created successfully",
             showConfirmButton: false,
-            timer: 2000
-          })
+            timer: 2000,
+          });
           history.push("/login");
         });
       }}
@@ -82,14 +88,14 @@ export const UserRegister = () => {
               </div>
             </Link>
 
-            <div className="mb-6 text-4xl font-bold  ">
+            <div className="mb-6 text-4xl font-bold">
               <label>Register</label>
             </div>
             <div className="mb-8 text-md">
               <p>Welcome!</p>
             </div>
 
-            <Form>
+            <Form className="mx-10 flex flex-wrap md:justify-center sm:justify-center">
               <TextField
                 label="First Name"
                 name="names"
@@ -104,6 +110,19 @@ export const UserRegister = () => {
                 placeholder="Doe"
               />
 
+              <TextField label="Password" 
+              name="password" 
+              type="password" 
+              placeholder="******"
+              />
+              
+              <TextField
+                label="Confirm Password"
+                name="confirmPassword"
+                type="password"
+                placeholder="******"
+              />
+
               <TextField
                 label="Email"
                 name="email"
@@ -111,15 +130,15 @@ export const UserRegister = () => {
                 placeholder="john@dev.com"
               />
 
-              <TextField
+              {/* <TextField
                 label="Phone"
                 name="phone"
                 type="text"
                 placeholder="1145879293"
-              />
+              /> */}
 
               <TextField
-                label="BirthDate"
+                label="Birthdate"
                 name="birthDate"
                 type="text"
                 placeholder="yyyy-mm-dd"

@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { getProduct } from "../Redux/action.js";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  faLocationDot,
+
   faMagnifyingGlass,
   faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
@@ -43,10 +43,7 @@ function Search() {
         </div>
       </Link>
 
-      <div>
-        <FontAwesomeIcon icon={faLocationDot} className="mx-1" />
-        Location
-      </div>
+    
 
       <div className="text-black flex ">
         <select className="outline-0 h-8 text-sm text-tertiary w-auto text-center rounded-l bg-secondary hover:cursor-pointer hover:text-white">
@@ -73,7 +70,7 @@ function Search() {
       </div>
 
       <div>Hello, Guest</div>
-      <Link to="">
+      <Link to="/cart">
         <div className="hover:text-white">
           <FontAwesomeIcon icon={faShoppingCart} /> Cart
         </div>

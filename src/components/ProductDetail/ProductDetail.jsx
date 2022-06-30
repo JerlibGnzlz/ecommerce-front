@@ -1,40 +1,52 @@
 import Navbar from "../NavBar";
 import { useSelector, useDispatch } from "react-redux";
 import { getProductDetail, reset } from "../Redux/action";
-import { useEffect } from "react";
+import { useEffect,useState} from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./Detail.css"
 
-// const product = {
-//   name: "Basic Tee 6-Pack",
-//   price: "$192",
-//   href: "#",
 
-//   images: [
-//     {
-//       src: "https://tailwindui.com/img/ecommerce-images/product-page-02-secondary-product-shot.jpg",
-//       alt: "Two each of gray, white, and black shirts laying flat.",
-//     },
-//   ],
-//   description:
-//     'The Basic Tee 6-Pack allows you to fully express your vibrant personality with three grayscale options. Feeling adventurous? Put on a heather gray tee. Want to be a trendsetter? Try our exclusive colorway: "Black". Need to add an extra pop of color to your outfit? Our white tee has you covered.',
-
-//   details:
-//     'The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming "Charcoal Gray" limited release.',
-// };
 
 export default function ProductDetail() {
   const dispatch = useDispatch();
   const productDetail = useSelector((state) => state.detail);
   const { id } = useParams();
+  const [cart, setCart] = useState([]);
 
+
+  console.log(productDetail, "prodDetail")
   useEffect(() => {
     dispatch(getProductDetail(id));
     return()=>{
       dispatch(reset())
     }
   }, [dispatch, id]);
+
+
+  useEffect(() => {
+    cart.length && localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  const cart2=localStorage.getItem("cart")
+  const objCart2=JSON.parse(cart2)
+  
+  
+  
+  function handleAddToCart() {
+ 
+    productDetail[0].cantidad=1
+    if (!objCart2.some((p) => p.name.includes(productDetail[0].name))) {
+      setCart([...objCart2,productDetail[0]]);
+      console.log("entre al if")
+    }
+  
+  }
+  
+
+
+
+
 
   return (
     <>
@@ -104,11 +116,13 @@ export default function ProductDetail() {
                 </p>
 
                 {/* Product bottom cart */}
-                <form classname=''>
+                <form className=''>
                   <button
                     type="submit"
                     className="mt-10 w-full bg-primary border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  >
+                   onClick={(e)=> handleAddToCart(e)}
+                   
+                   >
                     Add to cart
                   </button>
                 </form>

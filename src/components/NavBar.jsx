@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import {
-  faLocationDot,
+ 
   faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
 import logo from "../img/logo.png";
@@ -15,13 +15,10 @@ function NavBar() {
           <img src={logo} alt="logo" className="h-7 w-20 " />
         </div>
       </Link>
-      <div>
-        <FontAwesomeIcon icon={faLocationDot} className="mx-1" />
-        Location
-      </div>
+
 
       <div>Hello, Guest</div>
-      <Link to="">
+      <Link to="/cart">
         <div className="hover:text-white">
           <FontAwesomeIcon icon={faShoppingCart} /> Cart
         </div>
