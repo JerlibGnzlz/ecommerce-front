@@ -103,7 +103,7 @@ export default function ProductDetail() {
                   {Array(4)
                     .fill()
                     .map((_, i) => (
-                      <p className="text-2xl">&#9733;</p>
+                      <p key={i} className="text-2xl">&#9733;</p>
                     ))}
                 </div>
               </div>

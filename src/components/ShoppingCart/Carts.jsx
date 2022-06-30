@@ -31,7 +31,7 @@ useEffect(() => {
                   key={e.id}
                   name={e.name}
                   image={e.image}
-                  brandName={e.brandName}
+                  brandName={e.brand.name}
                   
         />
             

@@ -9,15 +9,15 @@ import Counter from './Counter';
 function ShoppingCart() {
   return (
     <div>
-      <NavBar/>
-      <h1 className='text-4xl font-semibold m-7 mt-14'>Shopping Cart</h1>
-    <div className="grid gap-2 grid-cols-2 ml-10">
+      <NavBar />
+      <h1 className="text-4xl font-semibold m-7 mt-14">Shopping Cart</h1>
+      <div className="grid gap-2 grid-cols-2 ml-10">
         <Carts />
-        <Counter/>
-      <Link to="/products">
-        <button className='button-primary mt-16'>Back</button>
-      </Link>
-    </div>
+        <Counter />
+        <Link to="/products">
+          <button className="button-primary mt-16 box-content w-20 h-8">Back</button>
+        </Link>
+      </div>
     </div>
   );
 }
