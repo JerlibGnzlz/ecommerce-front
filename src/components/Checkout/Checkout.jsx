@@ -1,6 +1,8 @@
 import React from "react";
 import CheckoutAddress from "./CheckoutAddress";
-import CheckoutPayment from "./CheckoutPayment";
+// import CheckoutPayment from "./CheckoutPayment";
+import CheckoutPaymentMp from "./CheckoutPaymentMp";
+// import CheckoutPaymentMp from "./CheckoutPaymentMp";
 
 
 function Checkout() {
@@ -12,8 +14,9 @@ function Checkout() {
           <form className="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16">
             <div>
             <CheckoutAddress/>
+            <CheckoutPaymentMp/>
             </div>
-            <CheckoutPayment/>
+            {/* <CheckoutPaymentMp/> */}
           </form>
         </div>
       </div>
