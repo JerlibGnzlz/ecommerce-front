@@ -3,7 +3,10 @@ import {
   GET_CATEGORIES,
   GET_BRAND,
   GET_PRODUCT_DETAIL,
-  RESET,TOP_SELLERS
+  RESET,TOP_SELLERS,
+  MERCADO_PAGO
+
+  
   
 } from "./action";
 
@@ -14,6 +17,8 @@ const initialState = {
    brand:[],
   cart:[],
   topSel: [],
+  linkmp: [],
+ 
 
 };
 
@@ -60,6 +65,13 @@ function rootReducer(state = initialState, action) {
         ...state,
         topSel: action.payload,
       };
+
+      case MERCADO_PAGO:
+        return {
+          ...state,
+          linkmp: action.payload,
+        };
+
 
     default:
       return state;

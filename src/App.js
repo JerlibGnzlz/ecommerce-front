@@ -9,7 +9,10 @@ import cart from "./components/ShoppingCart/ShopppingCart"
 
 import Products from "./components/Products/Products";
 
+import orderDetails from "./components/OrderDetails/orderDetails";
+
 import Checkout from "./components/Checkout/Checkout.jsx";
+
 
 function App() {
   return (
@@ -23,6 +26,8 @@ function App() {
         <Route path="/register" component={UserRegister} />
         <Route path="/checkout" component={Checkout} />
         <Route path="/cart" component={cart} />
+        <Route path="/orderDetails" component={orderDetails} />
+
 
 
       </Switch>
