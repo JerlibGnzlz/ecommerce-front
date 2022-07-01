@@ -1,6 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useAuth } from "../../context/AuthContext";
 import {
   faEnvelope,
   faLock,
@@ -11,6 +12,34 @@ function LoginForm() {
   const divStyle = {
     backgroundColor: "#0d0d0d",
     backgroundImage: "linear-gradient(149deg, #0d0d0d 59%, #404040 83%)",
+  };
+
+  const history = useHistory();
+
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = ({ target: { name, value } }) => {
+    setUser({ ...user, [name]: value });
+  };
+
+  const { login, loginWithGoogle } = useAuth();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await login(user.email, user.password);
+      history.push("/");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const googleLogin = async () => {
+    await loginWithGoogle();
+    history.push("/");
   };
 
   return (
@@ -26,7 +55,7 @@ function LoginForm() {
             </button>
           </div>
         </Link>
-        <form className="">
+        <form onSubmit={handleSubmit}>
           <div className="mb-6 text-4xl font-bold  ">
             <label>Login</label>
           </div>
@@ -38,9 +67,11 @@ function LoginForm() {
               <FontAwesomeIcon icon={faEnvelope} />
             </div>
             <input
-              type="email"
+              type="text"
               className="p-2 w-60 outline-none rounded-r text-sm  text-black font-bold placeholder:text-primary bg-tertiary placeholder:pl-2 "
               placeholder="Enter your email"
+              name="email"
+              onChange={handleChange}
             />
           </div>
           <div className="mb-3 flex justify-center ">
@@ -51,6 +82,8 @@ function LoginForm() {
               type="password"
               className="p-2 w-60 outline-none rounded-r text-sm text-black font-bold placeholder:text-primary bg-tertiary placeholder:pl-2"
               placeholder="Enter your password"
+              name="password"
+              onChange={handleChange}
             />
           </div>
           <div className="mb-6">
@@ -60,12 +93,10 @@ function LoginForm() {
           </div>
 
           <div className="mb-6 mt-1">
-          <Link to="/register">
+            <Link to="/register">
               <p className="text-xs">Forgot to register? do it here</p>
             </Link>
           </div>
-
-
 
           <div className="mb-3 flex justify-center ">
             <input
@@ -75,6 +106,7 @@ function LoginForm() {
             />
           </div>
         </form>
+        <button onClick={googleLogin}>Login With Google</button>
       </div>
     </div>
   );
