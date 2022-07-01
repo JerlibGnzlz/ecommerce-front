@@ -1,22 +1,45 @@
-import { React } from "react";
+import { React} from "react";
 import { useDispatch,useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import './Card.css'
-import { getProductDetail } from "../Redux/action";
-export default function Card({ id, name, price, category, image, brand, handleAddToCart }) {
+import { getProductDetail,addToCart } from "../Redux/action";
+export default function Card({ id, name, price, category, image, brand }) {
   let contador = 0;
   const dispatch = useDispatch();
   const productDetail = useSelector((state) => state.detail);
+  const cartProduct = useSelector((state) => state.cart);
+
+  console.log(cartProduct,'esto es el cartProduct de la CARD')
   // const { id } = useParams();
   // contador < 2 && console.log(productDetail, 'Soy el producto');
 
   // console.log(productDetail,'esto es del details')
-  productDetail.length&&handleAddToCart(productDetail[0])
+  if (productDetail.length) {
+    productDetail[0].cantidad = 1
+    dispatch(addToCart(productDetail[0]))
+  }
+  // const localStorageCard = localStorage.getItem('cartProducts');
+  // const localStorageCardObj=localStorageCard!==null&&JSON.parse(localStorageCard)
+  // console.log(localStorageCard, "SOY EL LOCAL STORAGE OBJ DE LA CARD");
+  // if (cartProduct !== null) {
+  //   localStorage.setItem("cartProducts", JSON.stringify(cartProduct));
+  // }
+  
+
+  // useEffect(() => {
+
+  //   if (productDetail?.length) {
+  //     console.log('entre al if del useEffect')
+  //     dispatch(addToCart(productDetail[0]))
+  //     console.log("")
+  //   }
+  // },[productDetail])
 
   function handleClick(e) {
     contador += 1;
     e.preventDefault();
     contador < 2 && dispatch(getProductDetail(id));
+
   }
 
   return (

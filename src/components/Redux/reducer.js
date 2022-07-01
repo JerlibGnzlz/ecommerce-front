@@ -3,16 +3,20 @@ import {
   GET_CATEGORIES,
   GET_BRAND,
   GET_PRODUCT_DETAIL,
-  RESET,TOP_SELLERS
-  
+  RESET,
+  TOP_SELLERS,
+  ADD_TO_CART,
+  RESET_CART,
+  ADD_TO_CART_DETAIL,
 } from "./action";
 
 const initialState = {
   products: [],
   detail: [],
   categories:[],
-   brand:[],
-  cart:[],
+  brand:[],
+  cart: {},
+  cartDetail:{},
   topSel: [],
 
 };
@@ -31,6 +35,11 @@ function rootReducer(state = initialState, action) {
         ...state,
         detail: [],
       };
+    case RESET_CART:
+      return {
+        ...state,
+        cart:{}
+      }
 
     case GET_PRODUCT: {
       return {
@@ -60,6 +69,16 @@ function rootReducer(state = initialState, action) {
         ...state,
         topSel: action.payload,
       };
+    case ADD_TO_CART:
+      return {
+        ...state,
+        cart:action.payload
+      }
+    case ADD_TO_CART_DETAIL:
+      return {
+        ...state,
+        cartDetail:action.payload
+      }
 
     default:
       return state;
