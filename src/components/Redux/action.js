@@ -6,10 +6,12 @@ export const GET_PRODUCT_DETAIL = "GET_PRODUCT_DETAIL";
 export const RESET = "RESET";
 export const TOP_SELLERS = "TOP_SELLERS";
 
+
 export const MERCADO_PAGO = "MERCADO_PAGO";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const RESET_CART = "RESET_CART";
 export const ADD_TO_CART_DETAIL = "ADD_TO_CART_DETAIL";
+
 
 export const getProduct =
   ({
@@ -89,6 +91,7 @@ export const resetCart = () => {
 };
 
 
+
 export function topSeller() {
   return async function (dispatch) {
     var json = await axios.get("http://localhost:3001/orderItem");
@@ -99,6 +102,7 @@ export function topSeller() {
     });
   };
 }
+
 
 
 export const postMercadoPago = (data) => {
@@ -113,6 +117,7 @@ export const postMercadoPago = (data) => {
     .catch((err) => console.error(err));
   };
 };
+
 
 
 

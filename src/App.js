@@ -18,22 +18,7 @@ import Checkout from "./components/Checkout/Checkout.jsx";
 function App() {
   return (
     <div className="App">
-<<<<<<< HEAD
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/products" component={Products} />
-        <Route exact path="/products/:genre" component={Products} />
-        <Route path="/detail/:id" exact component={ProductDetail} />
-        <Route path="/login" component={LoginForm} />
-        <Route path="/register" component={UserRegister} />
-        <Route path="/checkout" component={Checkout} />
-        <Route path="/cart" component={cart} />
-        <Route path="/orderDetails" component={orderDetails} />
 
-
-
-      </Switch>
-=======
       <AuthProvider>
         <Switch>
           <Route exact path="/" component={Home} />
@@ -46,7 +31,7 @@ function App() {
           <Route path="/cart" component={cart} />
         </Switch>
       </AuthProvider>
->>>>>>> 0a8249ddaf73819847370aef84db440825f77c04
+
     </div>
   );
 }

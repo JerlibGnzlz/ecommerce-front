@@ -3,9 +3,7 @@ import {
   GET_CATEGORIES,
   GET_BRAND,
   GET_PRODUCT_DETAIL,
-
-  RESET,TOP_SELLERS,
-  MERCADO_PAGO
+  MERCADO_PAGO,
   RESET,
   TOP_SELLERS,
   ADD_TO_CART,
@@ -86,11 +84,13 @@ function rootReducer(state = initialState, action) {
         cartDetail:action.payload
       }
 
+
       case MERCADO_PAGO:
         return {
           ...state,
           linkmp: action.payload,
         };
+
 
 
     default:
