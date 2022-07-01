@@ -10,6 +10,8 @@ import moment from "moment";
 import Swal from "sweetalert2";
 import { useAuth } from "../context/AuthContext.js";
 
+
+
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 export const UserRegister = () => {
@@ -33,7 +35,14 @@ export const UserRegister = () => {
       .required("Confirm password is required"),
     email: Yup.string().email("Invalid email").required("Required"),
     // phone: Yup.string().matches(
+
     //   /^((\\+[1-9]{1,4}[ \\-])|(\\([0-9]{2,3}\\)[ \\-])|([0-9]{2,4})[ \\-])?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
+
+
+    //   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
+
+    //   /^((\\+[1-9]{1,4}[ \\-])|(\\([0-9]{2,3}\\)[ \\-])|([0-9]{2,4})[ \\-])?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
+
     //   "Phone number is not valid"
     // ),
     birthDate: Yup.string()
@@ -58,7 +67,7 @@ export const UserRegister = () => {
         confirmPassword: '',
         // phone: "",
         birthDate: "",
-   
+
       }}
       validationSchema={validate}
       onSubmit={async (values) => {

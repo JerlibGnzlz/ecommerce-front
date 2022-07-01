@@ -10,11 +10,15 @@ import { AuthProvider } from "./context/AuthContext";
 
 import Products from "./components/Products/Products";
 
+import orderDetails from "./components/OrderDetails/orderDetails";
+
 import Checkout from "./components/Checkout/Checkout.jsx";
+
 
 function App() {
   return (
     <div className="App">
+
       <AuthProvider>
         <Switch>
           <Route exact path="/" component={Home} />
@@ -27,6 +31,7 @@ function App() {
           <Route path="/cart" component={cart} />
         </Switch>
       </AuthProvider>
+
     </div>
   );
 }
