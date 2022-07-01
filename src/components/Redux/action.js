@@ -5,7 +5,9 @@ export const GET_BRAND = "GET_BRAND";
 export const GET_PRODUCT_DETAIL = "GET_PRODUCT_DETAIL";
 export const RESET = "RESET";
 export const TOP_SELLERS = "TOP_SELLERS";
-
+export const ADD_TO_CART = "ADD_TO_CART";
+export const RESET_CART = "RESET_CART";
+export const ADD_TO_CART_DETAIL = "ADD_TO_CART_DETAIL";
 export const getProduct =
   ({
     id = undefined,
@@ -77,6 +79,12 @@ export const reset = () => {
     dispatch({ type: RESET });
   };
 };
+export const resetCart = () => {
+  return (dispatch) => {
+    dispatch({ type: RESET_CART });
+  };
+};
+
 
 
 
@@ -92,4 +100,23 @@ export function topSeller() {
       payload: json.data,
     });
   };
+}
+
+export function addToCart(product) {
+  return function (dispatch) {
+    return dispatch({
+      type: ADD_TO_CART,
+      payload:product
+    })
+    
+  }
+}
+export function addToCartDetail(product) {
+  return function (dispatch) {
+    return dispatch({
+      type: ADD_TO_CART_DETAIL,
+      payload:product
+    })
+    
+  }
 }
