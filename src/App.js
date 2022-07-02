@@ -11,11 +11,15 @@ import Reset from "./components/reset/Reset";
 
 import Products from "./components/Products/Products";
 
+import orderDetails from "./components/OrderDetails/orderDetails";
+
 import Checkout from "./components/Checkout/Checkout.jsx";
+
 
 function App() {
   return (
     <div className="App">
+
       <AuthProvider>
         <Switch>
           <Route exact path="/" component={Home} />
@@ -29,6 +33,7 @@ function App() {
           <Route path="/reset" component={Reset} />
         </Switch>
       </AuthProvider>
+
     </div>
   );
 }

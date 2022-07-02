@@ -10,6 +10,8 @@ import moment from "moment";
 import Swal from "sweetalert2";
 import { useAuth } from "../context/AuthContext.js";
 
+
+
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 export const UserRegister = () => {
@@ -33,7 +35,14 @@ export const UserRegister = () => {
       .required("Confirm password is required"),
     email: Yup.string().email("Invalid email").required("Required"),
     // phone: Yup.string().matches(
+
     //   /^((\\+[1-9]{1,4}[ \\-])|(\\([0-9]{2,3}\\)[ \\-])|([0-9]{2,4})[ \\-])?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
+
+
+    //   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
+
+    //   /^((\\+[1-9]{1,4}[ \\-])|(\\([0-9]{2,3}\\)[ \\-])|([0-9]{2,4})[ \\-])?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
+
     //   "Phone number is not valid"
     // ),
     birthDate: Yup.string()
@@ -54,10 +63,11 @@ export const UserRegister = () => {
         names: "",
         lastNames: "",
         email: "",
-        phone: "",
+        password: '',
+        confirmPassword: '',
+        // phone: "",
         birthDate: "",
-        password: "",
-        confirmPassword: "",
+
       }}
       validationSchema={validate}
       onSubmit={async (values) => {
@@ -96,14 +106,14 @@ export const UserRegister = () => {
               </div>
             </Link>
 
-            <div className="mb-6 text-4xl font-bold  ">
+            <div className="mb-6 text-4xl font-bold">
               <label>Register</label>
             </div>
             <div className="mb-8 text-md">
               <p>Welcome!</p>
             </div>
 
-            <Form>
+            <Form className="mx-10 flex flex-wrap md:justify-center sm:justify-center">
               <TextField
                 label="First Name"
                 name="names"
@@ -116,6 +126,19 @@ export const UserRegister = () => {
                 name="lastNames"
                 type="text"
                 placeholder="Doe"
+              />
+
+              <TextField label="Password" 
+              name="password" 
+              type="password" 
+              placeholder="******"
+              />
+              
+              <TextField
+                label="Confirm Password"
+                name="confirmPassword"
+                type="password"
+                placeholder="******"
               />
 
               <TextField
@@ -139,15 +162,15 @@ export const UserRegister = () => {
                 placeholder="john@dev.com"
               />
 
-              <TextField
+              {/* <TextField
                 label="Phone"
                 name="phone"
                 type="text"
                 placeholder="1145879293"
-              />
+              /> */}
 
               <TextField
-                label="BirthDate"
+                label="Birthdate"
                 name="birthDate"
                 type="text"
                 placeholder="yyyy-mm-dd"
