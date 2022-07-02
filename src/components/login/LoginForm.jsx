@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAuth } from "../../context/AuthContext";
 import {
@@ -14,7 +14,7 @@ function LoginForm() {
     backgroundImage: "linear-gradient(149deg, #0d0d0d 59%, #404040 83%)",
   };
 
-  const history = useHistory();
+  const navigate =useNavigate();
 
   const [user, setUser] = useState({
     email: "",
@@ -31,7 +31,7 @@ function LoginForm() {
     e.preventDefault();
     try {
       await login(user.email, user.password);
-      history.push("/");
+        navigate("/");
     } catch (error) {
       console.log(error.message);
     }
@@ -39,7 +39,7 @@ function LoginForm() {
 
   const googleLogin = async () => {
     await loginWithGoogle();
-    history.push("/");
+    navigate("/");
   };
 
   return (

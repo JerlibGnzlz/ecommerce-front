@@ -2,11 +2,11 @@ import Navbar from "../NavBar";
 import { useSelector, useDispatch } from "react-redux";
 import { getProductDetail, reset, addToCartDetail,resetCart } from "../Redux/action";
 import { useEffect} from "react";
-import { useParams,useHistory } from "react-router-dom";
+import { useParams,useNavigate} from "react-router-dom";
 import "./Detail.css";
 
 export default function ProductDetail() {
-  const history = useHistory();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const productDetail = useSelector((state) => state.detail);
   const cartProductDetail = useSelector((state) => state.cartDetail);
@@ -55,7 +55,7 @@ export default function ProductDetail() {
   console.log(localStorageObj, "llego el lechero");
 
   function handleAddToCart() {
-    productDetail[0].cantidad = 1;
+    productDetail[0].quantity = 1;
     dispatch(addToCartDetail(productDetail[0]));
     console.log('me ejecute addToCart')
     // if (!objCart2.some((p) => p.name.includes(productDetail[0].name))) {
@@ -66,7 +66,7 @@ export default function ProductDetail() {
   function backOnClicke(e) {
     e.preventDefault()
     dispatch(reset())
-    history.push('/products')
+    navigate('/products')
   }
 
 

@@ -26,7 +26,7 @@ useEffect(() => {
         ? product.map((e) => (
         
                   <Cart
-   
+                  price={e.price}
                   id={e.id}
                   key={e.id}
                   name={e.name}
