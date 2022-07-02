@@ -78,18 +78,39 @@ export const reset = () => {
   };
 };
 
-
-
-
-
 export function topSeller() {
   return async function (dispatch) {
     var json = await axios.get("http://localhost:3001/orderItem");
-
 
     return dispatch({
       type: TOP_SELLERS,
       payload: json.data,
     });
+  };
+}
+
+export function userGoogleRegister(payload) {
+  return async function () {
+    try {
+      const createUser = await axios.post(
+        "http://localhost:3001/users",
+        payload
+      );
+
+      return createUser;
+    } catch (error) {
+      return;
+    }
+  };
+}
+
+export function verification(payload) {
+  return async function () {
+    try {
+      var json = await axios.get(
+        `http://localhost:3001/verify?email=${payload}`
+      );
+      return json;
+    } catch (error) {}
   };
 }
