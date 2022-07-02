@@ -6,6 +6,11 @@ export const GET_PRODUCT_DETAIL = "GET_PRODUCT_DETAIL";
 export const RESET = "RESET";
 export const TOP_SELLERS = "TOP_SELLERS";
 
+export const MERCADO_PAGO = "MERCADO_PAGO";
+export const ADD_TO_CART = "ADD_TO_CART";
+export const RESET_CART = "RESET_CART";
+export const ADD_TO_CART_DETAIL = "ADD_TO_CART_DETAIL";
+
 export const getProduct =
   ({
     id = undefined,
@@ -85,6 +90,36 @@ export function topSeller() {
     return dispatch({
       type: TOP_SELLERS,
       payload: json.data,
+    });
+  };
+}
+
+export const postMercadoPago = (data) => {
+  console.log(data, "action");
+
+  return async function (dispatch) {
+    return axios
+      .post("http://localhost:3001/mp/payment", data)
+      .then((response) => {
+        dispatch({ type: MERCADO_PAGO, payload: response.data });
+      })
+      .catch((err) => console.error(err));
+  };
+};
+
+export function addToCart(product) {
+  return function (dispatch) {
+    return dispatch({
+      type: ADD_TO_CART,
+      payload: product,
+    });
+  };
+}
+export function addToCartDetail(product) {
+  return function (dispatch) {
+    return dispatch({
+      type: ADD_TO_CART_DETAIL,
+      payload: product,
     });
   };
 }
