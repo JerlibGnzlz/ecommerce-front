@@ -16,7 +16,7 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 export const UserRegister = () => {
   const history = useHistory();
-  const { signup } = useAuth();
+  const { signup, logout } = useAuth();
 
   const validate = Yup.object({
     names: Yup.string()
@@ -75,9 +75,8 @@ export const UserRegister = () => {
 
         try {
           await signup(values.email, values.password);
-        } catch (error) {
-          console.log(error.message);
-        }
+          await logout();
+        } catch (error) {}
 
         axios.post("http://localhost:3001/users", values).then((response) => {
           console.log("Data added successfully.");

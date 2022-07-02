@@ -7,6 +7,7 @@ import LoginForm from "./components/login/LoginForm.jsx";
 import { UserRegister } from "./components/UserRegister";
 import cart from "./components/ShoppingCart/ShopppingCart";
 import { AuthProvider } from "./context/AuthContext";
+import Reset from "./components/reset/Reset";
 
 import Products from "./components/Products/Products";
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/register" component={UserRegister} />
           <Route path="/checkout" component={Checkout} />
           <Route path="/cart" component={cart} />
+          <Route path="/reset" component={Reset} />
         </Switch>
       </AuthProvider>
 

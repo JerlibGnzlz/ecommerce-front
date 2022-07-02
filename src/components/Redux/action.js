@@ -106,15 +106,15 @@ export function topSeller() {
 
 
 export const postMercadoPago = (data) => {
-  console.log(data, 'action')
-  
+  console.log(data, "action");
+
   return async function (dispatch) {
     return axios
-    .post("http://localhost:3001/mp/payment", data)
-    .then((response) => {
-      dispatch({ type: MERCADO_PAGO, payload: response.data });
-    })
-    .catch((err) => console.error(err));
+      .post("http://localhost:3001/mp/payment", data)
+      .then((response) => {
+        dispatch({ type: MERCADO_PAGO, payload: response.data });
+      })
+      .catch((err) => console.error(err));
   };
 };
 
@@ -125,18 +125,46 @@ export function addToCart(product) {
   return function (dispatch) {
     return dispatch({
       type: ADD_TO_CART,
-      payload:product
+      payload: product,
     })
-    
+  
   }
 }
 export function addToCartDetail(product) {
   return function (dispatch) {
     return dispatch({
       type: ADD_TO_CART_DETAIL,
-      payload:product
+      payload: product,
     })
-    
+  
   }
 }
+
+export function userGoogleRegister(payload) {
+  return async function () {
+    try {
+      const createUser = await axios.post(
+        "http://localhost:3001/users",
+        payload
+      );
+
+      return createUser;
+    } catch (error) {
+      return;
+    }
+  };
+}
+
+export function verification(payload) {
+  return async function () {
+    try {
+      var json = await axios.get(
+        `http://localhost:3001/verify?email=${payload}`
+      );
+      return json;
+    } catch (error) {}
+  };
+}
+
+
 
