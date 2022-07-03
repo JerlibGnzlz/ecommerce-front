@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+
 import { Link, useNavigate } from "react-router-dom";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
@@ -16,6 +18,7 @@ function Reset() {
 
   const navigate = useNavigate();
   const { resetPassword } = useAuth();
+
   const [email, setEmail] = useState();
   const [err, setErr] = useState();
 
