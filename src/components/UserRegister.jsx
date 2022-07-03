@@ -1,10 +1,9 @@
 import React from "react";
 import { Formik, Form } from "formik";
 import { TextField } from "./TextField";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as Yup from "yup";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
 import Swal from "sweetalert2";
@@ -12,7 +11,7 @@ import Swal from "sweetalert2";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 export const UserRegister = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const validate = Yup.object({
     names: Yup.string()
@@ -69,7 +68,7 @@ export const UserRegister = () => {
             showConfirmButton: false,
             timer: 2000,
           });
-          history.push("/login");
+          navigate("/login");
         });
       }}
     >

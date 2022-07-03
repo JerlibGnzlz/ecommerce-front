@@ -3,15 +3,16 @@ import { Formik, ErrorMessage, Field, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function CheckoutAddress() {
-  const history = useHistory();
+  const navigate = useNavigate();
 
+  
 
   const validate = Yup.object({
-    names: Yup.string().min(2, "Too Short!").max(50, "Too Long!"),
-    lastNames: Yup.string().min(2, "Too Short!").max(50, "Too Long!"),
+    // names: Yup.string().min(2, "Too Short!").max(50, "Too Long!"),
+    // lastNames: Yup.string().min(2, "Too Short!").max(50, "Too Long!"),
     email: Yup.string().email("Invalid email"),
     postalCode: Yup.string()
       .min(4, "Must be at least 4 charaters")
@@ -28,8 +29,8 @@ function CheckoutAddress() {
   return (
     <Formik
       initialValues={{
-        names: "",
-        lastNames: "",
+        // names: "",
+        // lastNames: "",
         email: "",
         postalCode: "",
         state: "",
@@ -50,7 +51,7 @@ function CheckoutAddress() {
           showConfirmButton: false,
           timer: 2000,
         });
-        history.push("/mercadopago");
+        navigate("/mercadopago");
         
       })
        
@@ -58,14 +59,14 @@ function CheckoutAddress() {
     >
       {(formik, errors, touched) => (
         <Form >
-          <h2 className="mt-10 text-xl font-bold text-primary ">
+          <h2 className="mt-10 text-xl text-white font-bold ">
             Contact information
           </h2>
 
-          <div className="mt-4">
+          <div className="mt-6">
             <label
               htmlFor="email"
-              className="block text-md font-semibold text-primary"
+              className="block text-md font-medium text-white"
             
             >
               Email address
@@ -77,7 +78,7 @@ function CheckoutAddress() {
                 id="email"
                 name="email"
                 autoComplete="email"
-                className={`"lg:text-primary block w-full py-3  border-gray-300 rounded-md drop-shadow-xl focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" ${
+                className={`"text-black font-bold lg:text-primary block w-full py-3  border-gray-300 rounded-md drop-shadow-xl focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-tertiary placeholder:pl-2" ${
                   touched && errors && "is-invalid"
                 }`}
               />
@@ -91,14 +92,14 @@ function CheckoutAddress() {
 
           {/* Shipping information */}
           <div className="mt-4 pt-4">
-            <h2 className="text-xl font-bold text-primary">
+            <h2 className="text-xl font-bold text-white">
               Shipping information
             </h2>
             <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
-              <div>
+              {/* <div>
                 <label
                   htmlFor="first-name"
-                  className="block text-md font-semibold text-primary"
+                  className="block text-md font-medium text-white"
                 >
                   First name
                 </label>
@@ -108,20 +109,20 @@ function CheckoutAddress() {
                     id="first-name"
                     name="names"
                     autoComplete="given-name"
-                    className="block w-full py-3 border-gray-300 rounded-md drop-shadow-xl focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="text-black font-bold block w-full py-3 border-gray-300 rounded-md drop-shadow-xl focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-tertiary placeholder:pl-2"
                   />
                   <ErrorMessage
                     component="div"
                     name="names"
-                    className="text-red-700"
+                    className="text-red-400"
                   />
                 </div>
-              </div>
+              </div> */}
 
-              <div>
+              {/* <div>
                 <label
                   htmlFor="last-name"
-                  className="block text-md font-semibold text-primary "
+                  className="block text-md font-medium text-white "
                 >
                   Last name
                 </label>
@@ -131,20 +132,20 @@ function CheckoutAddress() {
                     id="last-name"
                     name="lastNames"
                     autoComplete="family-name"
-                    className="block w-full py-3 border-gray-300 rounded-md drop-shadow-xl focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="text-black font-bold block w-full py-3 border-gray-300 rounded-md drop-shadow-xl focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-tertiary placeholder:pl-2"
                   />
                   <ErrorMessage
                     component="div"
                     name="lastNames"
-                    className="text-red-700"
+                    className="text-red-400"
                   />
                 </div>
-              </div>
+              </div> */}
 
               <div className="sm:col-span-2">
                 <label
                   htmlFor="address"
-                  className="block text-md font-semibold text-primary"
+                  className="block text-md font-medium text-white"
                 >
                   Address
                 </label>
@@ -154,12 +155,12 @@ function CheckoutAddress() {
                     name="address"
                     id="address"
                     autoComplete="street-address"
-                    className="block w-full py-3 border-gray-300 rounded-md drop-shadow-xl focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="text-black font-bold block w-full py-3 border-gray-300 rounded-md drop-shadow-xl focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-tertiary placeholder:pl-2"
                   />
                   <ErrorMessage
                     component="div"
                     name="address"
-                    className="text-red-700"
+                    className="text-red-400"
                   />
                 </div>
               </div>
@@ -167,7 +168,7 @@ function CheckoutAddress() {
               <div className="sm:col-span-2">
                 <label
                   htmlFor="apartment"
-                  className="block text-md font-semibold text-primary"
+                  className="block text-md font-medium text-white"
                 >
                   Apartment, suite, etc.
                 </label>
@@ -176,12 +177,12 @@ function CheckoutAddress() {
                     type="text"
                     name="annotations"
                     id="apartment"
-                    className="block w-full py-3 border-gray-300 rounded-md drop-shadow-xl focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="text-black font-bold block w-full py-3 border-gray-300 rounded-md drop-shadow-xl focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-tertiary placeholder:pl-2"
                   />
                   <ErrorMessage
                     component="div"
                     name="annotations"
-                    className="text-red-700"
+                    className="text-red-400"
                   />
                 </div>
               </div>
@@ -189,7 +190,7 @@ function CheckoutAddress() {
               <div>
                 <label
                   htmlFor="state"
-                  className="block text-md font-semibold text-primary"
+                  className="block text-md font-medium text-white"
                 >
                   State
                 </label>
@@ -198,12 +199,12 @@ function CheckoutAddress() {
                     type="text"
                     name="state"
                     id="city"
-                    className="block w-full py-3 border-gray-300 rounded-md drop-shadow-xl focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="text-black font-bold block w-full py-3 border-gray-300 rounded-md drop-shadow-xl focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-tertiary placeholder:pl-2"
                   />
                   <ErrorMessage
                     component="div"
                     name="state"
-                    className="text-red-700"
+                    className="text-red-400"
                   />
                 </div>
               </div>
@@ -211,7 +212,7 @@ function CheckoutAddress() {
               <div>
                 <label
                   htmlFor="country"
-                  className="block text-md font-semibold text-primary"
+                  className="block text-md font-medium text-white"
                 >
                   City
                 </label>
@@ -220,12 +221,12 @@ function CheckoutAddress() {
                     id="country"
                     name="city"
                     autoComplete="city"
-                    className="block w-full py-3 border-gray-300 rounded-md drop-shadow-xl focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="text-black font-bold block w-full py-3 border-gray-300 rounded-md drop-shadow-xl focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-tertiary placeholder:pl-2"
                   />
                   <ErrorMessage
                     component="div"
                     name="city"
-                    className="text-red-700"
+                    className="text-red-400"
                   />
                 </div>
               </div>
@@ -233,7 +234,7 @@ function CheckoutAddress() {
               <div>
                 <label
                   htmlFor="postal-code"
-                  className="block text-md font-semibold text-primary"
+                  className="block text-md font-medium text-white"
                 >
                   Postal code
                 </label>
@@ -243,12 +244,12 @@ function CheckoutAddress() {
                     name="postalCode"
                     id="postal-code"
                     autoComplete="postal-code"
-                    className="block w-full py-3 border-gray-300 rounded-md drop-shadow-xl focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="text-black font-bold block w-full py-3 border-gray-300 rounded-md drop-shadow-xl focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-tertiary placeholder:pl-2"
                   />
                   <ErrorMessage
                     component="div"
                     name="postalCode"
-                    className="text-red-700"
+                    className="text-red-400"
                   />
                 </div>
               </div>
@@ -256,7 +257,7 @@ function CheckoutAddress() {
               <div>
                 <label
                   htmlFor="phone"
-                  className="block text-md font-semibold text-primary"
+                  className="block text-md font-medium text-white"
                 >
                   Phone
                 </label>
@@ -266,18 +267,17 @@ function CheckoutAddress() {
                     name="phone"
                     id="phone"
                     autoComplete="tel"
-                    className="block w-full py-3 border-gray-300 rounded-md drop-shadow-xl focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="text-black font-bold block w-full py-3 border-gray-300 rounded-md drop-shadow-xl focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-tertiary placeholder:pl-2"
                   />
                   <ErrorMessage
                     component="div"
                     name="phone"
-                    className="text-red-700"
+                    className="text-red-400"
                   />
                 </div>
               </div>
             </div>
 
-            
               <button onSubmit={formik.handleSubmit}
                 type="submit"
                 className="w-full mt-10 bg-primary border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-primary"
