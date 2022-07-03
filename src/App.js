@@ -28,7 +28,7 @@ function App() {
           <Route path="/register" element={<UserRegister />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/cart" element={<ShoppingCart />} />
-          <Route path="/reset" component={<Reset />} />
+          <Route path="/reset" element={<Reset />} />
         </Routes>
       </AuthProvider>
     </div>
