@@ -10,14 +10,11 @@ import moment from "moment";
 import Swal from "sweetalert2";
 import { useAuth } from "../context/AuthContext.js";
 
-
-
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 export const UserRegister = () => {
   const navigate = useNavigate();
-  const { signup } = useAuth();
-
+  const { signup, logout } = useAuth();
 
   const validate = Yup.object({
     names: Yup.string()
@@ -38,7 +35,6 @@ export const UserRegister = () => {
     // phone: Yup.string().matches(
 
     //   /^((\\+[1-9]{1,4}[ \\-])|(\\([0-9]{2,3}\\)[ \\-])|([0-9]{2,4})[ \\-])?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
-
 
     //   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
 
@@ -64,11 +60,10 @@ export const UserRegister = () => {
         names: "",
         lastNames: "",
         email: "",
-        password: '',
-        confirmPassword: '',
-        // phone: "",
+        password: "",
+        confirmPassword: "",
+        phone: "",
         birthDate: "",
-
       }}
       validationSchema={validate}
       onSubmit={async (values) => {
@@ -129,12 +124,13 @@ export const UserRegister = () => {
                 placeholder="Doe"
               />
 
-              <TextField label="Password" 
-              name="password" 
-              type="password" 
-              placeholder="******"
+              <TextField
+                label="Password"
+                name="password"
+                type="password"
+                placeholder="******"
               />
-              
+
               <TextField
                 label="Confirm Password"
                 name="confirmPassword"
@@ -142,7 +138,7 @@ export const UserRegister = () => {
                 placeholder="******"
               />
 
-              <TextField
+              {/*               <TextField
                 label="Password"
                 name="password"
                 type="password"
@@ -154,7 +150,7 @@ export const UserRegister = () => {
                 name="confirmPassword"
                 type="password"
                 placeholder="**"
-              />
+              /> */}
 
               <TextField
                 label="Email"
@@ -163,12 +159,12 @@ export const UserRegister = () => {
                 placeholder="john@dev.com"
               />
 
-              {/* <TextField
+              <TextField
                 label="Phone"
                 name="phone"
                 type="text"
                 placeholder="1145879293"
-              /> */}
+              />
 
               <TextField
                 label="Birthdate"
