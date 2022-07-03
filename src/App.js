@@ -7,6 +7,7 @@ import LoginForm from "./components/login/LoginForm.jsx";
 import { UserRegister } from "./components/UserRegister";
 import ShoppingCart from "./components/ShoppingCart/ShopppingCart";
 import { AuthProvider } from "./context/AuthContext";
+import Reset from "./components/reset/Reset";
 
 import Products from "./components/Products/Products";
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/cart" element={<ShoppingCart />} />
         </Routes>
+
       </AuthProvider>
     </div>
   );

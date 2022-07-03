@@ -1,7 +1,14 @@
+
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAuth } from "../../context/AuthContext";
+import { useDispatch } from "react-redux";
+import { userGoogleRegister } from "../Redux/action.js";
+import { verification } from "../Redux/action.js";
+
 import {
   faEnvelope,
   faLock,
@@ -14,33 +21,61 @@ function LoginForm() {
     backgroundImage: "linear-gradient(149deg, #0d0d0d 59%, #404040 83%)",
   };
 
+
   const navigate =useNavigate();
 
-  const [user, setUser] = useState({
+  
+  const dispatch = useDispatch();
+
+
+  const [User, setUser] = useState({
     email: "",
     password: "",
   });
 
+  const [err, setErr] = useState();
+
   const handleChange = ({ target: { name, value } }) => {
-    setUser({ ...user, [name]: value });
+    setUser({ ...User, [name]: value });
   };
 
-  const { login, loginWithGoogle } = useAuth();
+  const { login, loginWithGoogle, user } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+
       await login(user.email, user.password);
         navigate("/");
+
+    
+      dispatch(verification(User.email));
+
+
     } catch (error) {
-      console.log(error.message);
+      setErr("Sucedio un error");
     }
   };
 
   const googleLogin = async () => {
     await loginWithGoogle();
+
     navigate("/");
+
   };
+
+  useEffect(() => {
+    if (user) {
+      const data = {
+        email: user.email,
+        names: user.displayName,
+        lastNames: "Google",
+        phone: "Google",
+        birthDate: 1900 - 10 - 12,
+      };
+      dispatch(userGoogleRegister(data));
+    }
+  }, [user, dispatch]);
 
   return (
     <div className="flex w-screen bg-zinc-100 text-white h-screen justify-center items-center m-auto ">
@@ -74,6 +109,7 @@ function LoginForm() {
               onChange={handleChange}
             />
           </div>
+          <p className="text-red-600 mb-2 ">{err && "Wrong credentials"}</p>
           <div className="mb-3 flex justify-center ">
             <div className="bg-tertiary w-6 rounded-l  flex justify-center items-center pl-3">
               <FontAwesomeIcon icon={faLock} />
@@ -87,7 +123,7 @@ function LoginForm() {
             />
           </div>
           <div className="mb-6">
-            <Link to="">
+            <Link to="/reset">
               <p className="text-xs">Forgot your password?</p>
             </Link>
           </div>
