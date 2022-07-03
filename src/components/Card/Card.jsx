@@ -15,7 +15,7 @@ export default function Card({ id, name, price, category, image, brand }) {
 
   // console.log(productDetail,'esto es del details')
   if (productDetail.length) {
-    productDetail[0].cantidad = 1
+    productDetail[0].quantity = 1
     dispatch(addToCart(productDetail[0]))
   }
   // const localStorageCard = localStorage.getItem('cartProducts');

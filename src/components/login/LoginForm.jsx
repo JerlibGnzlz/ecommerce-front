@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAuth } from "../../context/AuthContext";
 import { useDispatch } from "react-redux";
@@ -18,8 +21,12 @@ function LoginForm() {
     backgroundImage: "linear-gradient(149deg, #0d0d0d 59%, #404040 83%)",
   };
 
-  const history = useHistory();
+
+  const navigate =useNavigate();
+
+  
   const dispatch = useDispatch();
+
 
   const [User, setUser] = useState({
     email: "",
@@ -37,9 +44,14 @@ function LoginForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await login(User.email, User.password);
+
+      await login(user.email, user.password);
+        navigate("/");
+
+    
       dispatch(verification(User.email));
-      history.push("/");
+
+
     } catch (error) {
       setErr("Sucedio un error");
     }
@@ -48,7 +60,8 @@ function LoginForm() {
   const googleLogin = async () => {
     await loginWithGoogle();
 
-    history.push("/");
+    navigate("/");
+
   };
 
   useEffect(() => {

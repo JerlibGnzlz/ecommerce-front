@@ -7,49 +7,49 @@ function CheckoutPaymentMp() {
   const dispatch = useDispatch();
   const mp= useSelector((state) => state.linkmp)
 
-  const cart = [
-    {
-      id: 1,
-      name: "Classic meet for men",
-      description: "cualquiera",
-      image: "https://m.media-amazon.com/images/I/51inY39-t8L._AC_UY535_.jpg",
-      quantity: 3,
-      price: 55,
-    },
+  // const cart = [
+  //   {
+  //     id: 1,
+  //     name: "Classic meet for men",
+  //     description: "cualquiera",
+  //     image: "https://m.media-amazon.com/images/I/51inY39-t8L._AC_UY535_.jpg",
+  //     quantity: 3,
+  //     price: 55,
+  //   },
     
-  ];
+  // ];
 
-  const [body, setBody] = useState({
-    product: [],
-    back_urls: {
-      failure: "http://localhost:3000/success",
-      pending: "http://localhost:3000/success",
-      success: "http://localhost:3000/success",
-    },
-    auto_return: "approved",
-    total: 55,
-    user:1
+  // const [body, setBody] = useState({
+  //   product: [],
+  //   back_urls: {
+  //     failure: "http://localhost:3000/success",
+  //     pending: "http://localhost:3000/success",
+  //     success: "http://localhost:3000/success",
+  //   },
+  //   auto_return: "approved",
+  //   total: 55,
+  //   user:1
 
-  });
-
+  // });
+  const LocalStorageCheckOut = JSON.parse(localStorage.getItem('cart'));
   function handleClick(e) {
     e.preventDefault()
-    setBody(
-      cart &&
-        cart.map((e) =>
-          body.product.push({
-            name: e.name,
-            price: e.price,
-            description: e.description,
-            quantity: e.quantity,
-            image: e.image,
-            id: e.id,
-          })
-        )
-    );
-
-    dispatch(postMercadoPago(body));
-    console.log(body, "body");
+    // setBody(
+    //   cart &&
+    //     cart.map((e) =>
+    //       body.product.push({
+    //         name: e.name,
+    //         price: e.price,
+    //         description: e.description,
+    //         quantity: e.quantity,
+    //         image: e.image,
+    //         id: e.id,
+    //       })
+    //     )
+    // );
+    
+    dispatch(postMercadoPago({product: LocalStorageCheckOut,user:1 }));
+    console.log(LocalStorageCheckOut, "LocalStorageCheckOut");
   }
 
  console.log(mp)

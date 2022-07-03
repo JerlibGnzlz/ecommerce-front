@@ -9,13 +9,17 @@ import {
   getProduct,
   getBrand,
 } from "../Redux/action";
-import { useParams } from "react-router-dom";
+import { useParams,useSearchParams } from "react-router-dom";
 import Paginado from "../Paginado/Paginado";
 import "./Products.css";
+
 
 export default function Products() {
   const Products = useSelector((state) => state.products);
   const cartProduct = useSelector((state) => state.cart);
+  const [params] = useSearchParams();
+  const paymentStatus = params.get("status"); 
+  console.log(paymentStatus,"Este es el paymentStatus")
   console.log(cartProduct,'ESTE ES EL CART PRODUCT ')
   const dispatch = useDispatch();
   const { genre } = useParams();
@@ -31,7 +35,7 @@ export default function Products() {
   function paginado(pageNumber) {
     setCurrentPage(pageNumber);
   }
-
+  paymentStatus === 'approved' && localStorage.removeItem('cart');
   useEffect(() => {
     dispatch(getProduct({ genre: genre }));
     dispatch(getCategories({ genre: genre }));
