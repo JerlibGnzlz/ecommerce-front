@@ -1,51 +1,73 @@
 import Navbar from "../NavBar";
 import { useSelector, useDispatch } from "react-redux";
-import { getProductDetail, reset } from "../Redux/action";
-import { useEffect,useState} from "react";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
-import "./Detail.css"
-
-
+import { getProductDetail, reset, addToCartDetail,resetCart } from "../Redux/action";
+import { useEffect} from "react";
+import { useParams,useHistory } from "react-router-dom";
+import "./Detail.css";
 
 export default function ProductDetail() {
+  const history = useHistory();
   const dispatch = useDispatch();
   const productDetail = useSelector((state) => state.detail);
+  const cartProductDetail = useSelector((state) => state.cartDetail);
+  console.log(cartProductDetail,'esto es el cartProductDetail del detalle')
   const { id } = useParams();
-  const [cart, setCart] = useState([]);
+  
 
-
-  console.log(productDetail, "prodDetail")
+  // console.log(productDetail, "prodDetail");
   useEffect(() => {
     dispatch(getProductDetail(id));
-    return()=>{
-      dispatch(reset())
-    }
   }, [dispatch, id]);
 
+  useEffect(() => { 
+    dispatch(resetCart());
+  },[dispatch])
 
   useEffect(() => {
-    cart.length && localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
-
-  const cart2=localStorage.getItem("cart")
-  const objCart2=JSON.parse(cart2)
-  
-  
-  
-  function handleAddToCart() {
- 
-    productDetail[0].cantidad=1
-    if (!objCart2.some((p) => p.name.includes(productDetail[0].name))) {
-      setCart([...objCart2,productDetail[0]]);
-      console.log("entre al if")
+    const localStorageCart = localStorage.getItem("cart");
+    if (Array.isArray(JSON.parse(localStorageCart))) {
+      const localConverted = JSON.parse(localStorageCart);
+      if (!localConverted?.find((f) => f?.name === cartProductDetail?.name)&&cartProductDetail!==null&&cartProductDetail.hasOwnProperty("name")) {
+        localStorage.setItem(
+          "cart",
+          JSON.stringify([...localConverted, cartProductDetail])
+        );
+        // console.log("entre al array");
+      }
+    } else {
+      const localCart = JSON.parse(localStorageCart);
+      console.log(localCart,'ESTO ES EL LOCALCART')
+      if (localCart!==null&&localCart.hasOwnProperty('name') && cartProductDetail !== null && cartProductDetail?.name!==localCart.name) {
+        console.log(localCart, "soy el localCart del detalle");
+        localStorage.setItem("cart", JSON.stringify([localCart, cartProductDetail]));
+      } else if (cartProductDetail.hasOwnProperty('name')) {
+        // console.log(cartProductDetail,'soy el cartProoduct' )
+        localStorage.setItem("cart", JSON.stringify(cartProductDetail));
+      }
     }
-  
+  }, [cartProductDetail]);
+
+  // const cart2=localStorage.getItem("cart")
+  // const objCart2=JSON.parse(cart2)
+
+  const localStorageCart = localStorage.getItem("cart");
+  const localStorageObj = JSON.parse(localStorageCart);
+  console.log(localStorageObj, "llego el lechero");
+
+  function handleAddToCart() {
+    productDetail[0].cantidad = 1;
+    dispatch(addToCartDetail(productDetail[0]));
+    console.log('me ejecute addToCart')
+    // if (!objCart2.some((p) => p.name.includes(productDetail[0].name))) {
+    //   setCart([...objCart2,productDetail[0]]);
+    //   console.log("entre al if")
+    // }
   }
-  
-
-
-
+  function backOnClicke(e) {
+    e.preventDefault()
+    dispatch(reset())
+    history.push('/products')
+  }
 
 
   return (
@@ -103,7 +125,9 @@ export default function ProductDetail() {
                   {Array(4)
                     .fill()
                     .map((_, i) => (
-                      <p className="text-2xl">&#9733;</p>
+                      <p key={i} className="text-2xl">
+                        &#9733;
+                      </p>
                     ))}
                 </div>
               </div>
@@ -116,28 +140,30 @@ export default function ProductDetail() {
                 </p>
 
                 {/* Product bottom cart */}
-                <form className=''>
+                <div className="">
                   <button
                     type="submit"
                     className="mt-10 w-full bg-primary border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                   onClick={(e)=> handleAddToCart(e)}
-                   
-                   >
+                    onClick={(e) => handleAddToCart(e)}
+                  >
                     Add to cart
                   </button>
-                </form>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Bottom Back */}
-          <div className='w-full h-16 fixed bottom-0 mt-28 bg-primary'>
-          <Link to={"/products"}> 
-          <p className="text-center mt-5 text-white hover:text-tertiary">Go to Back</p>
-          </Link>
+          <div className="w-full h-16 fixed bottom-0 mt-28 bg-primary">
+            
+              <button
+                onClick={(e) => backOnClicke(e)}
+                className="text-center mt-5 text-white hover:text-tertiary"
+              >
+                Go Back
+              </button>
+           
           </div>
-
-
         </div>
       }
     </>

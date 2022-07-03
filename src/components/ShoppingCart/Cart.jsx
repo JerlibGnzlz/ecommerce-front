@@ -50,7 +50,7 @@ function Cart({ name, brandName, id, image }) {
   function handleDelete(e) {
     e.preventDefault();
     // dispatch(deleteCart(id))
-    const filter = product.filter((e) => e.id !== id);
+    const filter = product.filter((f) => f.id !== id);
     localStorage.removeItem("cart");
     localStorage.setItem("cart", JSON.stringify(filter));
   }

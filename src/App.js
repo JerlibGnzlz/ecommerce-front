@@ -5,7 +5,8 @@ import ProductDetail from "./components/ProductDetail/ProductDetail";
 import Home from "./components/Home/Home.jsx";
 import LoginForm from "./components/login/LoginForm.jsx";
 import { UserRegister } from "./components/UserRegister";
-import cart from "./components/ShoppingCart/ShopppingCart"
+import cart from "./components/ShoppingCart/ShopppingCart";
+import { AuthProvider } from "./context/AuthContext";
 
 import Products from "./components/Products/Products";
 
@@ -18,6 +19,8 @@ import MercadoPago from "./components/MercadoPago/MercadoPago";
 function App() {
   return (
     <div className="App">
+
+ <AuthProvider>
       <Routes>
         <Route exact path="/" element={<Home/>} />
         <Route exact path="/products" element={<Products/>} />
@@ -29,8 +32,10 @@ function App() {
         <Route path="/cart" element={cart} />
         <Route path="/orderDetails" element={<orderDetails/>} />
         <Route path="/mercadopago" element={<MercadoPago/>} />
-
       </Routes>
+ </AuthProvider>
+
+
     </div>
   );
 }

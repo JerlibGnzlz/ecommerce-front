@@ -5,8 +5,11 @@ export const GET_BRAND = "GET_BRAND";
 export const GET_PRODUCT_DETAIL = "GET_PRODUCT_DETAIL";
 export const RESET = "RESET";
 export const TOP_SELLERS = "TOP_SELLERS";
-export const MERCADO_PAGO = "MERCADO_PAGO";
 
+export const MERCADO_PAGO = "MERCADO_PAGO";
+export const ADD_TO_CART = "ADD_TO_CART";
+export const RESET_CART = "RESET_CART";
+export const ADD_TO_CART_DETAIL = "ADD_TO_CART_DETAIL";
 
 export const getProduct =
   ({
@@ -79,6 +82,12 @@ export const reset = () => {
     dispatch({ type: RESET });
   };
 };
+export const resetCart = () => {
+  return (dispatch) => {
+    dispatch({ type: RESET_CART });
+  };
+};
+
 
 export function topSeller() {
   return async function (dispatch) {
@@ -90,6 +99,7 @@ export function topSeller() {
     });
   };
 }
+
 
 export const postMercadoPago = (data) => {
   console.log(data, 'action')
@@ -104,4 +114,24 @@ export const postMercadoPago = (data) => {
   };
 };
 
+
+
+export function addToCart(product) {
+  return function (dispatch) {
+    return dispatch({
+      type: ADD_TO_CART,
+      payload:product
+    })
+    
+  }
+}
+export function addToCartDetail(product) {
+  return function (dispatch) {
+    return dispatch({
+      type: ADD_TO_CART_DETAIL,
+      payload:product
+    })
+    
+  }
+}
 
