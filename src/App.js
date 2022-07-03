@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Route, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import ProductDetail from "./components/ProductDetail/ProductDetail";
 import Home from "./components/Home/Home.jsx";
 import LoginForm from "./components/login/LoginForm.jsx";
@@ -19,37 +19,23 @@ import MercadoPago from "./components/MercadoPago/MercadoPago";
 function App() {
   return (
     <div className="App">
-<<<<<<< HEAD
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/products" component={Products} />
-        <Route exact path="/products/:genre" component={Products} />
-        <Route path="/detail/:id" exact component={ProductDetail} />
-        <Route path="/login" component={LoginForm} />
-        <Route path="/register" component={UserRegister} />
-        <Route path="/checkout" component={Checkout} />
-        <Route path="/cart" component={cart} />
-        <Route path="/orderDetails" component={orderDetails} />
-        <Route path="/mercadopago" component={MercadoPago} />
+
+ <AuthProvider>
+      <Routes>
+        <Route exact path="/" element={<Home/>} />
+        <Route exact path="/products" element={<Products/>} />
+        <Route exact path="/products/:genre" element={<Products/>} />
+        <Route path="/detail/:id" exact element={<ProductDetail/>} />
+        <Route path="/login" element={<LoginForm/>} />
+        <Route path="/register" element={<UserRegister/>} />
+        <Route path="/checkout" element={<Checkout/>} />
+        <Route path="/cart" element={cart} />
+        <Route path="/orderDetails" element={<orderDetails/>} />
+        <Route path="/mercadopago" element={<MercadoPago/>} />
+      </Routes>
+ </AuthProvider>
 
 
-
-
-      </Switch>
-=======
-      <AuthProvider>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/products" component={Products} />
-          <Route exact path="/products/:genre" component={Products} />
-          <Route path="/detail/:id" exact component={ProductDetail} />
-          <Route path="/login" component={LoginForm} />
-          <Route path="/register" component={UserRegister} />
-          <Route path="/checkout" component={Checkout} />
-          <Route path="/cart" component={cart} />
-        </Switch>
-      </AuthProvider>
->>>>>>> 0a8249ddaf73819847370aef84db440825f77c04
     </div>
   );
 }

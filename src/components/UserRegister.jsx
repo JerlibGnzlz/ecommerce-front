@@ -1,23 +1,25 @@
 import React from "react";
 import { Formik, Form } from "formik";
 import { TextField } from "./TextField";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as Yup from "yup";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
 import Swal from "sweetalert2";
-<<<<<<< HEAD
-=======
+
+
 import { useAuth } from "../context/AuthContext.js";
->>>>>>> 0a8249ddaf73819847370aef84db440825f77c04
+
 
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 export const UserRegister = () => {
-  const history = useHistory();
+
+  const navigate = useNavigate();
+  
   const { signup } = useAuth();
+
 
   const validate = Yup.object({
     names: Yup.string()
@@ -36,11 +38,11 @@ export const UserRegister = () => {
       .required("Confirm password is required"),
     email: Yup.string().email("Invalid email").required("Required"),
     // phone: Yup.string().matches(
-<<<<<<< HEAD
+
     //   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
-=======
+
     //   /^((\\+[1-9]{1,4}[ \\-])|(\\([0-9]{2,3}\\)[ \\-])|([0-9]{2,4})[ \\-])?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
->>>>>>> 0a8249ddaf73819847370aef84db440825f77c04
+
     //   "Phone number is not valid"
     // ),
     birthDate: Yup.string()
@@ -65,8 +67,6 @@ export const UserRegister = () => {
         confirmPassword: '',
         // phone: "",
         birthDate: "",
-        password: "",
-        confirmPassword: "",
       }}
       validationSchema={validate}
       onSubmit={async (values) => {
@@ -87,7 +87,7 @@ export const UserRegister = () => {
             showConfirmButton: false,
             timer: 2000,
           });
-          history.push("/login");
+          navigate("/login");
         });
       }}
     >
