@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
@@ -14,7 +16,9 @@ function Reset() {
     backgroundImage: "linear-gradient(149deg, #0d0d0d 59%, #404040 83%)",
   };
 
-  /* const history = useHistory() */ const { resetPassword } = useAuth();
+  const navigate = useNavigate();
+  const { resetPassword } = useAuth();
+
   const [email, setEmail] = useState();
   const [err, setErr] = useState();
 

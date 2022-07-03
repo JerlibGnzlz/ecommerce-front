@@ -2,20 +2,19 @@ import React,{useState} from 'react'
 import { Link } from 'react-router-dom';
 import accounting from 'accounting';
 
-function Counter() {
+function Counter({product}) {
   let subTotal=0;
   const localCounter = localStorage.getItem('cart')
   const localCartCounter = localCounter !== null && JSON.parse(localCounter)
   if (localCartCounter) {
     // console.log(localCartCounter,'ESTE ES EL LOCALCARTCOUNTER')
-    for (let product of localCartCounter) {
-      subTotal += (product.quantity * parseFloat(product.price))
+    for (let i = 0; i < product.length;i++ ) {
+      subTotal += (product[i].quantity * parseFloat(product[i].price))
       console.log(product.name,subTotal,'ESTE ES EL SUBTOTAL DENTRO DEL FOR')
     }
   }
- 
   
-   console.log(subTotal,'ESTE ES EL SUBTOTAL')
+  console.log(subTotal,'ESTE ES EL SUBTOTAL')
   return (
     <div className="rounded-2xl bg-white box-border w-9/12 h-auto mx-auto pb-8 shadow-2xl ">
       <div className="bg-white border-2 border-gray-300/100 rounded-xl m-8 pb-4 ">

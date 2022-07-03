@@ -48,7 +48,7 @@ function CheckoutPaymentMp() {
     //     )
     // );
     
-    dispatch(postMercadoPago({product: LocalStorageCheckOut,user:1 }));
+    dispatch(postMercadoPago({product: LocalStorageCheckOut,user:"neubigin0@4shared.com" }));
     console.log(LocalStorageCheckOut, "LocalStorageCheckOut");
   }
 
