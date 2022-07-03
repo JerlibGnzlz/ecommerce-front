@@ -1,12 +1,11 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Link } from 'react-router-dom';
 import accounting from 'accounting';
 
 function Counter() {
-
+  let subTotal=0;
   const localCounter = localStorage.getItem('cart')
   const localCartCounter = localCounter !== null && JSON.parse(localCounter)
-  let subTotal=0;
   if (localCartCounter) {
     // console.log(localCartCounter,'ESTE ES EL LOCALCARTCOUNTER')
     for (let product of localCartCounter) {
@@ -14,19 +13,28 @@ function Counter() {
       console.log(product.name,subTotal,'ESTE ES EL SUBTOTAL DENTRO DEL FOR')
     }
   }
-  console.log(subTotal,'ESTE ES EL SUBTOTAL')
+ 
+  
+   console.log(subTotal,'ESTE ES EL SUBTOTAL')
   return (
     <div className="rounded-2xl bg-white box-border w-9/12 h-auto mx-auto pb-8 shadow-2xl ">
       <div className="bg-white border-2 border-gray-300/100 rounded-xl m-8 pb-4 ">
         <h1 className="text-3xl m-2 ">Order Summary</h1>
         <h2 className="my-10 ml-5 ">
-          SubTotal <p className='text-xl mt-5 ml-5'>{accounting.formatMoney(subTotal, "U$S ", 2)}</p>
+          SubTotal{" "}
+          <p className="text-xl mt-5 ml-5">
+            {accounting.formatMoney(subTotal, "U$S ", 2)}
+          </p>
         </h2>
         <h2 className="my-10 ml-5 ">
-          Shipping: <p className="text-green-600 mt-5 ml-5 font-bold">Free Shipping</p>
+          Shipping:{" "}
+          <p className="text-green-600 mt-5 ml-5 font-bold">Free Shipping</p>
         </h2>
         <h2 className="my-10 ml-5 mr-5 border-t-2 border-gray-500">
-          Total<p className='text-xl mt-5 ml-5'>{accounting.formatMoney(subTotal, "U$S ", 2)}</p>
+          Total
+          <p className="text-xl mt-5 ml-5">
+            {accounting.formatMoney(subTotal, "U$S ", 2)}
+          </p>
         </h2>
       </div>
 

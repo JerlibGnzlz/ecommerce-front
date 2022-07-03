@@ -1,7 +1,7 @@
 import { React } from "react";
 import { useState } from "react";
-import { useDispatch }  from "react-redux";
-import { deleteCart } from "../Redux/action";
+//import { useDispatch }  from "react-redux";
+//import { deleteCart } from "../Redux/action";
 
 function Cart({ name, brandName, id, image, price }) {
   // const dispatch = useDispatch();
@@ -51,7 +51,7 @@ function Cart({ name, brandName, id, image, price }) {
   function handleDelete(e) {
     e.preventDefault();
     // dispatch(deleteCart(id))
-    const filter = product.filter((f) => f.id !== id);
+    product.filter((f) => f.id !== id);
     // localStorage.removeItem("cart");
     // localStorage.setItem("cart", JSON.stringify(filter));
   }
