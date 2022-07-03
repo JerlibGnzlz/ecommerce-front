@@ -16,7 +16,7 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 export const UserRegister = () => {
   const navigate = useNavigate();
-  const { signup } = useAuth();
+  const { signup,logout } = useAuth();
 
 
   const validate = Yup.object({
@@ -142,19 +142,7 @@ export const UserRegister = () => {
                 placeholder="******"
               />
 
-              <TextField
-                label="Password"
-                name="password"
-                type="password"
-                placeholder="**"
-              />
-
-              <TextField
-                label="Confirm Password"
-                name="confirmPassword"
-                type="password"
-                placeholder="**"
-              />
+              
 
               <TextField
                 label="Email"
