@@ -15,7 +15,6 @@ import orderDetails from "./components/OrderDetails/orderDetails";
 
 import Checkout from "./components/Checkout/Checkout.jsx";
 
-
 function App() {
   return (
     <div className="App">
@@ -29,8 +28,8 @@ function App() {
           <Route path="/register" element={<UserRegister />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/cart" element={<ShoppingCart />} />
+          <Route path="/reset" component={<Reset />} />
         </Routes>
-
       </AuthProvider>
     </div>
   );
