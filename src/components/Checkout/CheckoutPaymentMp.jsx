@@ -5,7 +5,7 @@ import { postMercadoPago } from "../Redux/action";
 
 function CheckoutPaymentMp() {
   const dispatch = useDispatch();
-  const mp= useSelector((state) => state.linkmp)
+  // const mp= useSelector((state) => state.linkmp)
 
   const cart = [
     {
@@ -52,17 +52,18 @@ function CheckoutPaymentMp() {
     console.log(body, "body");
   }
 
- console.log(mp)
+//  console.log(mp)
 
   return (
     <div>
         <div className=" border-gray-200 py-6 px-4 sm:px-6">
-      <button onClick={handleClick} type="submit"
-               className="w-full bg-primary border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-primary"
-             >Confirm</button>
+
+      {/* <button onClick={handleClick} type="submit"
+               className="w-full mt-4 bg-primary border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-primary"
+        >Confirm</button>  */}
         </div>
       
-      <a href={mp.init_point} className="text-white font-bold">MercadoPago</a>
+      {/* <a href={mp.init_point} className="text-black font-bold">MercadoPago</a> */}
     </div>
   );
 }

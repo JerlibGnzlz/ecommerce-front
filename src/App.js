@@ -13,6 +13,7 @@ import Products from "./components/Products/Products";
 import orderDetails from "./components/OrderDetails/orderDetails";
 
 import Checkout from "./components/Checkout/Checkout.jsx";
+import MercadoPago from "./components/MercadoPago/MercadoPago";
 
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
         <Route path="/checkout" component={Checkout} />
         <Route path="/cart" component={cart} />
         <Route path="/orderDetails" component={orderDetails} />
+        <Route path="/mercadopago" component={MercadoPago} />
+
 
 
 
