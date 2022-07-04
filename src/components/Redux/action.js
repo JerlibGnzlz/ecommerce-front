@@ -29,16 +29,21 @@ export const getProduct =
     search = "",
   }) =>
   async (dispatch) => {
-    const product = await axios.get(URL_GET_PRODUCT, {
-      params: {
-        id: id,
-        price: price,
-        category: categoryId,
-        brand: brandId,
-        genre: genre,
-        search: search,
-      },
-    });
+
+    const product = await axios.get(
+      "https://free-style-store.herokuapp.com/product",
+      {
+        params: {
+          id: id,
+          price: price,
+          category: categoryId,
+          brand: brandId,
+          genre: genre,
+          search: search,
+        },
+      }
+    );
+
     // console.log(categoryId,brandId,'esto es el categoryId y el BrandID de  la action')
     return dispatch({ type: GET_PRODUCT, payload: product.data });
   };
