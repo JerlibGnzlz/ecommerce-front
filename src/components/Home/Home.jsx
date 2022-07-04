@@ -85,7 +85,7 @@ export default function Home() {
 
       <h4 className="Top">Top Sellers</h4>
 
-      <TopSellers />
+      {/* <TopSellers /> */}
       <h2 className="font-extra-bold text-5xl text-center w-full mb-3">
         Our Costumers Speak
       </h2>
