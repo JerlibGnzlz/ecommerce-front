@@ -11,6 +11,7 @@ function TopSellers() {
   useEffect(() => {
     dispatch(topSeller());
   }, [dispatch]);
+  console.log(products);
   return (
     <div className=" w-screen h-auto flex flex-row justify-around">
       {products.length > 0 &&
