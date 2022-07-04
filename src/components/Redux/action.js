@@ -21,19 +21,16 @@ export const getProduct =
     search = "",
   }) =>
   async (dispatch) => {
-    const product = await axios.get(
-      `https://free-style-store.herokuapp.com/product`,
-      {
-        params: {
-          id: id,
-          price: price,
-          category: categoryId,
-          brand: brandId,
-          genre: genre,
-          search: search,
-        },
-      }
-    );
+    const product = await axios.get("URL_GET_PRODUCT", {
+      params: {
+        id: id,
+        price: price,
+        category: categoryId,
+        brand: brandId,
+        genre: genre,
+        search: search,
+      },
+    });
     // console.log(categoryId,brandId,'esto es el categoryId y el BrandID de  la action')
     return dispatch({ type: GET_PRODUCT, payload: product.data });
   };
@@ -41,15 +38,12 @@ export const getProduct =
 export const getCategories =
   ({ genre = undefined, brand = undefined }) =>
   async (dispatch) => {
-    const categories = await axios.get(
-      `https://free-style-store.herokuapp.com/categories`,
-      {
-        params: {
-          genre: genre,
-          brand: brand,
-        },
-      }
-    );
+    const categories = await axios.get("URL_GET_CATEGORIES", {
+      params: {
+        genre: genre,
+        brand: brand,
+      },
+    });
 
     return dispatch({
       type: GET_CATEGORIES,
@@ -60,15 +54,12 @@ export const getCategories =
 export const getBrand =
   ({ genre = undefined, category = undefined }) =>
   async (dispatch) => {
-    const brand = await axios.get(
-      `https://free-style-store.herokuapp.com/brands`,
-      {
-        params: {
-          genre: genre,
-          category: category,
-        },
-      }
-    );
+    const brand = await axios.get(" URL_GET_BRAND", {
+      params: {
+        genre: genre,
+        category: category,
+      },
+    });
 
     return dispatch({
       type: GET_BRAND,
@@ -77,14 +68,11 @@ export const getBrand =
   };
 
 export const getProductDetail = (id) => async (dispatch) => {
-  const product = await axios.get(
-    `https://free-style-store.herokuapp.com/product`,
-    {
-      params: {
-        id: id,
-      },
-    }
-  );
+  const product = await axios.get("URL_GET_PRODUCT_DETAIL", {
+    params: {
+      id: id,
+    },
+  });
 
   return dispatch({ type: GET_PRODUCT_DETAIL, payload: product.data });
 };
@@ -102,9 +90,7 @@ export const resetCart = () => {
 
 export function topSeller() {
   return async function (dispatch) {
-    var json = await axios.get(
-      `https://free-style-store.herokuapp.com/orderItem`
-    );
+    var json = await axios.get("URL_TOP_SELLERS");
 
     return dispatch({
       type: TOP_SELLERS,
@@ -118,7 +104,7 @@ export const postMercadoPago = (data) => {
 
   return async function (dispatch) {
     return axios
-      .post(`https://free-style-store.herokuapp.com/mp/payment`, data)
+      .post("URL_MERCADO_PAGO", data)
       .then((response) => {
         dispatch({ type: MERCADO_PAGO, payload: response.data });
       })
