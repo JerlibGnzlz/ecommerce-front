@@ -3,8 +3,8 @@ import {
   URL_GET_CATEGORIES,
   URL_GET_PRODUCT,
   URL_MERCADO_PAGO,
-  URL_MERCADO_PAGO,
   URL_TOP_SELLERS,
+  URL_GET_PRODUCT_DETAIL,
 } from "../constant";
 import axios from "axios";
 export const GET_PRODUCT = "GET_PRODUCT";
@@ -29,7 +29,6 @@ export const getProduct =
     search = "",
   }) =>
   async (dispatch) => {
-
     const product = await axios.get(
       "https://free-style-store.herokuapp.com/product",
       {
