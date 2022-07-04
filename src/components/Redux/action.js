@@ -78,14 +78,9 @@ export const reset = () => {
   };
 };
 
-
-
-
-
 export function topSeller() {
   return async function (dispatch) {
     var json = await axios.get("http://localhost:3001/orderItem");
-
 
     return dispatch({
       type: TOP_SELLERS,
