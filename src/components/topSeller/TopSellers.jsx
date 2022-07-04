@@ -13,15 +13,20 @@ function TopSellers() {
   }, [dispatch]);
   return (
     <div className=" w-screen h-auto flex flex-row justify-around">
-      {products.map((e) => (
-        <Link to={`/detail/${e.id}`} key={e.id}>
-          <div >
-            <div className="img">
-              <img src={e.image} alt="Not found" className="object-contais w-56 h-72" />
+      {products.length > 0 &&
+        products.map((e) => (
+          <Link to={`/detail/${e.id}`} key={e.id}>
+            <div>
+              <div className="img">
+                <img
+                  src={e.image}
+                  alt="Not found"
+                  className="object-contais w-56 h-72"
+                />
+              </div>
             </div>
-          </div>
-        </Link>
-      ))}
+          </Link>
+        ))}
     </div>
   );
 }
