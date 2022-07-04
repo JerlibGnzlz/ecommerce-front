@@ -15,7 +15,7 @@ function Cart({ name, brandName, id, image, price,handleDelete,product,counter }
   // const [count, setCount] = useState(1);
 
   let contador2 = product.filter((e) => e.id === id);
-  console.log(contador2[0].quantity, "con2");
+  // console.log(contador2[0].quantity, "con2");
 
   // function counter(e) {
   //   e.preventDefault();

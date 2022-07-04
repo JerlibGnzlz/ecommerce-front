@@ -14,8 +14,8 @@ export default function Products() {
   const cartProduct = useSelector((state) => state.cart);
   const [params] = useSearchParams();
   const paymentStatus = params.get("status");
-  console.log(paymentStatus, "Este es el paymentStatus");
-  console.log(cartProduct, "ESTE ES EL CART PRODUCT ");
+  // console.log(paymentStatus, "Este es el paymentStatus");
+  // console.log(cartProduct, "ESTE ES EL CART PRODUCT ");
   const dispatch = useDispatch();
   const { genre } = useParams();
   const [currentPage, setCurrentPage] = useState(1);
@@ -26,6 +26,12 @@ export default function Products() {
     indexOfFirstProduct,
     indexOfLastProduct
   );
+  
+  // function getAllProducts() {
+    
+
+  //   dispatch(getProduct({ genre: genre }));
+  // }
 
   function paginado(pageNumber) {
     setCurrentPage(pageNumber);
@@ -33,6 +39,7 @@ export default function Products() {
   paymentStatus === "approved" && localStorage.removeItem("cart");
   useEffect(() => {
     dispatch(getProduct({ genre: genre }));
+    // console.log(genre,'esto es el genre del useEffect')
     dispatch(getCategories({ genre: genre }));
     dispatch(getBrand({ genre: genre }));
   }, [dispatch, genre]);
@@ -64,14 +71,14 @@ export default function Products() {
       }
     } else {
       const localCart = JSON.parse(localStorageCart);
-      console.log(localCart, "ESTO ES EL LOCALCART");
+      // console.log(localCart, "ESTO ES EL LOCALCART");
       if (
         localCart !== null &&
         localCart.hasOwnProperty("name") &&
         cartProduct !== null &&
         cartProduct?.name !== localCart.name
       ) {
-        console.log(localCart, "soy el localCart del detalle");
+        // console.log(localCart, "soy el localCart del detalle");
         localStorage.setItem("cart", JSON.stringify([localCart, cartProduct]));
       } else if (cartProduct.hasOwnProperty("name")) {
         // console.log(cartProduct,'soy el cartProoduct' )
@@ -92,7 +99,7 @@ export default function Products() {
       </div>
       <div className="cards2">
         <div className="card2">
-          <Filter />
+          <Filter paginado={paginado} />
         </div>
         <div className="container">
           {currentProduct &&

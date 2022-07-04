@@ -10,7 +10,7 @@ export default function ProductDetail() {
   const dispatch = useDispatch();
   const productDetail = useSelector((state) => state.detail);
   const cartProductDetail = useSelector((state) => state.cartDetail);
-  console.log(cartProductDetail,'esto es el cartProductDetail del detalle')
+  // console.log(cartProductDetail,'esto es el cartProductDetail del detalle')
   const { id } = useParams();
   
 
@@ -36,9 +36,9 @@ export default function ProductDetail() {
       }
     } else {
       const localCart = JSON.parse(localStorageCart);
-      console.log(localCart,'ESTO ES EL LOCALCART')
+      // console.log(localCart,'ESTO ES EL LOCALCART')
       if (localCart!==null&&localCart.hasOwnProperty('name') && cartProductDetail !== null && cartProductDetail?.name!==localCart.name) {
-        console.log(localCart, "soy el localCart del detalle");
+        // console.log(localCart, "soy el localCart del detalle");
         localStorage.setItem("cart", JSON.stringify([localCart, cartProductDetail]));
       } else if (cartProductDetail.hasOwnProperty('name')) {
         // console.log(cartProductDetail,'soy el cartProoduct' )
@@ -52,12 +52,12 @@ export default function ProductDetail() {
 
   const localStorageCart = localStorage.getItem("cart");
   const localStorageObj = JSON.parse(localStorageCart);
-  console.log(localStorageObj, "llego el lechero");
+  // console.log(localStorageObj, "llego el lechero");
 
   function handleAddToCart() {
     productDetail[0].quantity = 1;
     dispatch(addToCartDetail(productDetail[0]));
-    console.log('me ejecute addToCart')
+    // console.log('me ejecute addToCart')
     // if (!objCart2.some((p) => p.name.includes(productDetail[0].name))) {
     //   setCart([...objCart2,productDetail[0]]);
     //   console.log("entre al if")

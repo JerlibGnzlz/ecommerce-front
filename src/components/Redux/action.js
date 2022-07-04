@@ -33,7 +33,7 @@ export const getProduct =
         search: search,
       },
     });
-
+    // console.log(categoryId,brandId,'esto es el categoryId y el BrandID de  la action')
     return dispatch({ type: GET_PRODUCT, payload: product.data });
   };
 
@@ -106,7 +106,7 @@ export function topSeller() {
 
 
 export const postMercadoPago = (data) => {
-  console.log(data, "action");
+  // console.log(data, "action");
 
   return async function (dispatch) {
     return axios

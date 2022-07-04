@@ -49,10 +49,10 @@ function CheckoutPaymentMp() {
     // );
     
     dispatch(postMercadoPago({product: LocalStorageCheckOut,user:"neubigin0@4shared.com" }));
-    console.log(LocalStorageCheckOut, "LocalStorageCheckOut");
+    // console.log(LocalStorageCheckOut, "LocalStorageCheckOut");
   }
 
- console.log(mp)
+//  console.log(mp)
 
   return (
     <div>

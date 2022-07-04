@@ -16,25 +16,25 @@ function NavBar() {
 
   return (
     <div className="bg-primary text-tertiary py-4 flex justify-around  ">
-      <Link to="/">
+      {/* <Link to="/"> */}
         <div>
           <img src={logo} alt="logo" className="h-7 w-20 " />
         </div>
-      </Link>
+      {/* </Link> */}
 
       <div>{welcome}</div>
-      <Link to="/cart">
+      {/* <Link to="/cart"> */}
         <div className="hover:text-white">
           <FontAwesomeIcon icon={faShoppingCart} /> Cart
         </div>
-      </Link>
+      {/* </Link> */}
       {/* Boton Login */}
 
       <button
         onClick={handleLogout}
         className="bg-secondary px-3 rounded py-1.5 hover:text-white "
       >
-        {user ? "Log out" : <Link to="/login">Log in</Link>}
+        {/* {user ? "Log out" : <Link to="/login">Log in</Link>} */}
       </button>
     </div>
   );

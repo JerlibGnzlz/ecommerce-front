@@ -19,14 +19,14 @@ useEffect(() => {
 }, [cart])
   
   function handleDelete(id) {
-    console.log(id,'soy el id')
+    // console.log(id,'soy el id')
     // e.preventDefault();
     // dispatch(deleteCart(id))
     const filter = product.filter((f) => f.id !== id);
     localStorage.removeItem("cart");
     localStorage.setItem("cart", JSON.stringify(filter));
     setProduct(filter)
-    console.log(product,'soy el produc actualizado')
+    // console.log(product,'soy el produc actualizado')
 
     // const pro = localStorage.getItem(cart);
   }
@@ -70,13 +70,13 @@ useEffect(() => {
     }
   }
 
-
-
+  
   return (
     <>
       <div>
         {product?.length
           ? product.map((e) => (
+            
             <Cart
                 
                 counter={counter}
@@ -87,7 +87,7 @@ useEffect(() => {
                 key={e.id}
                 name={e.name}
                 image={e.image}
-                brandName={e.brand.name}
+                brandName={e.brand?.name}
               />
             ))
           : "tu carrito esta vacio"}

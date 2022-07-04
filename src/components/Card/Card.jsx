@@ -9,7 +9,7 @@ export default function Card({ id, name, price, category, image, brand }) {
   const productDetail = useSelector((state) => state.detail);
   const cartProduct = useSelector((state) => state.cart);
 
-  console.log(cartProduct,'esto es el cartProduct de la CARD')
+  // console.log(cartProduct,'esto es el cartProduct de la CARD')
   // const { id } = useParams();
   // contador < 2 && console.log(productDetail, 'Soy el producto');
 

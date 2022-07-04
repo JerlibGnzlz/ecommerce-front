@@ -76,7 +76,7 @@ export const UserRegister = () => {
         } catch (error) {}
 
         axios.post("http://localhost:3001/users", values).then((response) => {
-          console.log("Data added successfully.");
+          // console.log("Data added successfully.");
           Swal.fire({
             // position: 'center',
             // icon: 'success',

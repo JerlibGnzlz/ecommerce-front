@@ -1,8 +1,16 @@
 import React,{useState} from 'react'
 import { Link } from 'react-router-dom';
 import accounting from 'accounting';
+import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from 'react-router-dom';
 
-function Counter({product}) {
+function Counter({ product }) {
+  const navigate=useNavigate()
+  const { user, logout } = useAuth();
+  let welcome = user ? "Hello, " + user.email : "Hello, Guest";
+  const handleLogout = async () => {
+    await logout();
+  };
   let subTotal=0;
   const localCounter = localStorage.getItem('cart')
   const localCartCounter = localCounter !== null && JSON.parse(localCounter)
@@ -10,11 +18,18 @@ function Counter({product}) {
     // console.log(localCartCounter,'ESTE ES EL LOCALCARTCOUNTER')
     for (let i = 0; i < product.length;i++ ) {
       subTotal += (product[i].quantity * parseFloat(product[i].price))
-      console.log(product.name,subTotal,'ESTE ES EL SUBTOTAL DENTRO DEL FOR')
+      // console.log(product.name,subTotal,'ESTE ES EL SUBTOTAL DENTRO DEL FOR')
+    }
+  }
+  function handleCheckOut() {
+    if (user?.email) {
+      navigate("/checkout")
+    } else {
+      alert("Registrate")
     }
   }
   
-  console.log(subTotal,'ESTE ES EL SUBTOTAL')
+  // console.log(subTotal,'ESTE ES EL SUBTOTAL')
   return (
     <div className="rounded-2xl bg-white box-border w-9/12 h-auto mx-auto pb-8 shadow-2xl ">
       <div className="bg-white border-2 border-gray-300/100 rounded-xl m-8 pb-4 ">
@@ -38,11 +53,12 @@ function Counter({product}) {
       </div>
 
       <div className="flex justify-center">
-        <Link to="/checkout">
-          <button className="button-primary mx-8  box-border w-96 py-3">
-            CheckOut
-          </button>
-        </Link>
+        <button
+          onClick={()=>handleCheckOut()}
+          className="button-primary mx-8  box-border w-96 py-3"
+        >
+          CheckOut
+        </button>
       </div>
     </div>
   );

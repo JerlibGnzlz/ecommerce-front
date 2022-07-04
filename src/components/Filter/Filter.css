@@ -1,4 +1,4 @@
-.category{
+/* .category{
     position: relative;
     top:3vw;
 }
@@ -31,8 +31,8 @@
 .categories h2{
     position: relative;
     font-size: 14px;
-}
-.price{
+} */
+/* .price{
     position: relative;
     top: 3.8vw;
    
@@ -57,4 +57,11 @@
 .brands h1{
     font-size: 1.2vw;
     font-weight: 700;
+} */
+.On{
+  color:red;
+}
+
+.Off{
+  color:blue
 }

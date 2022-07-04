@@ -11,7 +11,7 @@ export default function footer() {
                 <h4>Legal</h4>
             </div>
 
-            <div className="link">
+            {/* <div className="link">
                 <NavLink to="#"><h5>About Us</h5></NavLink>
                 <NavLink to="#"><h5>Help Center</h5></NavLink>
                 <NavLink to="#"><h5>Cookies Policy</h5></NavLink>
@@ -22,7 +22,7 @@ export default function footer() {
                 <NavLink to="#"><h5 >Terms of Service</h5></NavLink>
                 <NavLink to="#"><h5>Contact Us</h5></NavLink>
                 <h6>© 2022 Free Style. All rights reserved</h6>
-            </div>
+            </div> */}
 
 
 

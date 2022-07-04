@@ -12,12 +12,12 @@ function TopSellers() {
     dispatch(topSeller());
   }, [dispatch]);
   return (
-    <div className="w-screen h-auto flex flex-row justify-around">
+    <div className=" w-screen h-auto flex flex-row justify-around">
       {products.map((e) => (
         <Link to={`/detail/${e.id}`} key={e.id}>
-          <div className="w-64 h-72">
+          <div >
             <div className="img">
-              <img src={e.image} alt="Not found" className="w-64 h-72" />
+              <img src={e.image} alt="Not found" className="object-contais w-56 h-72" />
             </div>
           </div>
         </Link>

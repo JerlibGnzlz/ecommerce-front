@@ -9,6 +9,7 @@ import {
   faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../img/logo.png";
+import { useAuth } from "../../context/AuthContext";
 
 function Search() {
   const [product] = useState();
@@ -20,6 +21,11 @@ function Search() {
     color: "red",
     textShadow: "1px 1px 3px black",
   };
+  const { user, logout } = useAuth();
+  let welcome = user ? "Hello, " + user.email : "Hello, Guest";
+   const handleLogout = async () => {
+     await logout();
+   };
 
   const handleChange = (e) => {
     dispatch(
@@ -69,18 +75,19 @@ function Search() {
         </button>
       </div>
 
-      <div>Hello, Guest</div>
+      <div>{welcome}</div>
       <Link to="/cart">
         <div className="hover:text-white">
           <FontAwesomeIcon icon={faShoppingCart} /> Cart
         </div>
       </Link>
 
-      <Link to="/login">
-        <button className="bg-secondary px-3 rounded py-1.5 hover:text-white ">
-          Log in
-        </button>
-      </Link>
+      <button
+        onClick={handleLogout}
+        className="bg-secondary px-3 rounded py-1.5 hover:text-white "
+      >
+        {user ? "Log out" : <Link to="/login">Log in</Link>}
+      </button>
     </div>
   );
 }
