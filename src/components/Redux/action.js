@@ -22,7 +22,7 @@ export const getProduct =
   }) =>
   async (dispatch) => {
     const product = await axios.get(
-      `https://free-style-store.herokuapp.com/product`,
+      "https://free-style-store.herokuapp.com/product",
       {
         params: {
           id: id,
